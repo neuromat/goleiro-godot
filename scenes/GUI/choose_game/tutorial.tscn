@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://images/goleiro.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 1 )
+
+[node name="raiz_tutorial" type="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 278.0
+margin/bottom = 362.0
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 89.0
+margin/top = 19.0
+margin/right = 179.0
+margin/bottom = 49.0
+custom_fonts/font = SubResource( 1 )
+text = "Tutorial"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 129.792, 108.392 )
+transform/rot = 5.00896e-06
+transform/scale = Vector2( 0.0942603, 0.101391 )
+texture = ExtResource( 2 )
+
+

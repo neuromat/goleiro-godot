@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/base_motora/base_motora.gd" type="Script" id=1]
+[ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 3 )
+
+[node name="control" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 150.0
+margin/bottom = 150.0
+script/script = ExtResource( 1 )
+
+[node name="b_backMenu" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 409.0
+margin/top = 379.0
+margin/right = 559.0
+margin/bottom = 429.0
+custom_fonts/font = SubResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Voltar Menu"
+flat = false
+
+[node name="quit" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 405.0
+margin/top = 157.0
+margin/right = 555.0
+margin/bottom = 207.0
+custom_fonts/font = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Vamos fugir! :D"
+flat = false
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 14.0
+margin/top = 167.0
+margin/right = 204.0
+margin/bottom = 185.0
+text = "Clique"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

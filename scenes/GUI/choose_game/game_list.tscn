@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=1]
+
+[ext_resource path="res://scenes/GUI/config/box.png" type="Texture" id=1]
+[ext_resource path="res://scenes/GUI/choose_game/game_list.gd" type="Script" id=2]
+[ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=3]
+[ext_resource path="res://images/Interface/button.png" type="Texture" id=4]
+[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="StyleBoxTexture" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 1 )
+margin/left = 0.0
+margin/right = 0.0
+margin/top = 0.0
+margin/bottom = 0.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.941406, 0.783279, 0.783279, 1 )
+light_color = Color( 1, 1, 1, 1 )
+dark_color = Color( 0.933594, 0.725723, 0.725723, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[sub_resource type="DynamicFont" id=3]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 5 )
+
+[node name="raiz_escolha_jogo" type="Panel"]
+
+anchor/top = 3
+anchor/right = 1
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 360.0
+margin/right = 899.0
+margin/bottom = -112.0
+custom_styles/panel = SubResource( 1 )
+script/script = ExtResource( 2 )
+
+[node name="nomeUser" type="LineEdit" parent="."]
+
+visibility/visible = false
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 120.5
+margin/top = 130.0
+margin/right = -129.5
+margin/bottom = 165.0
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/selection_color = Color( 0.957031, 0.571976, 0.571976, 1 )
+custom_colors/cursor_color = Color( 0.363281, 0.153259, 0.153259, 1 )
+custom_colors/font_color_selected = Color( 0.246094, 0.103821, 0.103821, 1 )
+custom_colors/font_color = Color( 0.914062, 0.032135, 0.032135, 1 )
+placeholder/alpha = 0.6
+focus_mode = 2
+caret/caret_blink = false
+caret/caret_blink_speed = 0.65
+
+[node name="b_baseMotora" type="TextureButton" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 105.5
+margin/top = 105.0
+margin/right = -112.5
+margin/bottom = 181.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 0.5, 0.35 )
+
+[node name="Label" type="Label" parent="b_baseMotora"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 37.0
+margin/top = 24.0
+margin/right = 169.0
+margin/bottom = 54.0
+custom_fonts/font = SubResource( 4 )
+text = "Base Motora"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_jogoGoleiro" type="TextureButton" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 105.5
+margin/top = 243.0
+margin/right = -112.5
+margin/bottom = 319.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 0.5, 0.35 )
+
+[node name="Label" type="Label" parent="b_jogoGoleiro"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 31.0
+margin/top = 26.0
+margin/right = 192.0
+margin/bottom = 56.0
+custom_fonts/font = SubResource( 5 )
+text = "Jogo do Goleiro"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_sair" type="TextureButton" parent="."]
+
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 105.5
+margin/top = 333.0
+margin/right = -112.5
+margin/bottom = 409.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 0.5, 0.35 )
+
+[node name="Label" type="Label" parent="b_sair"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 80.0
+margin/top = 26.0
+margin/right = 123.0
+margin/bottom = 56.0
+custom_fonts/font = SubResource( 6 )
+text = "Sair"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_continuar" type="TextureButton" parent="."]
+
+visibility/visible = false
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 105.5
+margin/top = 333.0
+margin/right = -112.5
+margin/bottom = 409.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 0.5, 0.35 )
+
+[node name="Label" type="Label" parent="b_continuar"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 57.0
+margin/top = 26.0
+margin/right = 163.0
+margin/bottom = 56.0
+custom_fonts/font = SubResource( 7 )
+text = "Continuar"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+
