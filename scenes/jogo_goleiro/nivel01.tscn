@@ -1,12 +1,14 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://scenes/jogo_goleiro/nivel01.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_nivel_01.png" type="Texture" id=2]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=3]
 [ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=4]
-[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://images/Interface/seta_01.png" type="Texture" id=6]
-[ext_resource path="res://images/Interface/seta_02.png" type="Texture" id=7]
+[ext_resource path="res://animations/animation_goalkeper/Esqueleto.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=6]
+[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://images/Interface/seta_01.png" type="Texture" id=8]
+[ext_resource path="res://images/Interface/seta_02.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -74,7 +76,7 @@ font/font = ExtResource( 4 )
 font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 5 )
+font/font = ExtResource( 7 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -124,10 +126,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 89.0
-margin/top = 526.0
-margin/right = 339.0
-margin/bottom = 576.0
+margin/left = 1132.0
+margin/top = 657.0
+margin/right = 1270.0
+margin/bottom = 707.0
 custom_fonts/font = SubResource( 1 )
 toggle_mode = false
 enabled_focus_mode = 2
@@ -135,8 +137,91 @@ shortcut = null
 text = "Encerrar jogo"
 flat = false
 
+[node name="goalKeeper" parent="." instance=ExtResource( 5 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 593.226, 514.059 )
+transform/scale = Vector2( 0.09, 0.09 )
+
+[node name="R-Arm" parent="goalKeeper"]
+
+transform/pos = Vector2( 677.369, 1.75439 )
+transform/rot = -17.1002
+transform/scale = Vector2( 1, 1 )
+
+[node name="R-Forearm" parent="goalKeeper"]
+
+transform/pos = Vector2( 943.316, 219.069 )
+transform/rot = 11.7497
+transform/scale = Vector2( 1, 1 )
+
+[node name="R-Hand" parent="goalKeeper"]
+
+transform/pos = Vector2( 1282.91, 168.903 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="L-Arm" parent="goalKeeper"]
+
+transform/pos = Vector2( 350.996, 10.0962 )
+transform/rot = 22.3035
+transform/scale = Vector2( 1, 1 )
+
+[node name="L-Forearm" parent="goalKeeper"]
+
+transform/pos = Vector2( 102.055, 252.351 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="L-Hand" parent="goalKeeper"]
+
+transform/pos = Vector2( -218.954, 253.707 )
+transform/scale = Vector2( 1, 0.999999 )
+
+[node name="L-Thigh" parent="goalKeeper"]
+
+transform/pos = Vector2( 460.875, 387.114 )
+
+[node name="R-Thigh" parent="goalKeeper"]
+
+transform/pos = Vector2( 580.373, 388.056 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="R-Leg" parent="goalKeeper"]
+
+transform/pos = Vector2( 922.588, 556.022 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="L-Leg" parent="goalKeeper"]
+
+transform/pos = Vector2( 153.787, 622.604 )
+transform/scale = Vector2( 1, 1 )
+
+[node name="L-Foot" parent="goalKeeper"]
+
+transform/pos = Vector2( 36.8159, 1032.97 )
+transform/scale = Vector2( 1.13398, 1 )
+
+[node name="R-Foot" parent="goalKeeper"]
+
+transform/pos = Vector2( 937.356, 1036.22 )
+transform/scale = Vector2( 1.13026, 1 )
+
+[node name="TextureFrame" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 337.0
+margin/top = 412.0
+margin/right = 943.0
+margin/bottom = 639.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 0
+
 [node name="janelaFim" type="Panel" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 visibility/opacity = 0.7
 focus/ignore_mouse = false
@@ -221,14 +306,15 @@ max_lines_visible = -1
 
 [node name="janelaSequencia" type="Panel" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 635.0
-margin/top = 520.0
-margin/right = 1262.0
-margin/bottom = 690.0
+margin/left = 39.0
+margin/top = 80.0
+margin/right = 666.0
+margin/bottom = 320.0
 
 [node name="texto" type="Label" parent="janelaSequencia"]
 
@@ -253,9 +339,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 15.0
-margin/top = 40.0
+margin/top = 42.0
 margin/right = 602.0
-margin/bottom = 152.0
+margin/bottom = 215.0
 syntax_highlighting = false
 show_line_numbers = false
 highlight_all_occurrences = false
@@ -265,6 +351,7 @@ caret/caret_blink_speed = 0.65
 
 [node name="b_chutes" type="Panel" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -281,14 +368,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1.0
-margin/top = 1.0
-margin/right = 84.0
-margin/bottom = 95.0
+margin/left = 319.0
+margin/top = 31.0
+margin/right = 402.0
+margin/bottom = 125.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 8 )
 params/scale = Vector2( 0.15, 0.15 )
 
 [node name="b_baixo" type="TextureButton" parent="b_chutes"]
@@ -298,14 +385,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 96.0
-margin/top = 99.0
-margin/right = 179.0
-margin/bottom = 193.0
+margin/left = 533.0
+margin/top = 125.0
+margin/right = 617.0
+margin/bottom = 219.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 8 )
 params/scale = Vector2( 0.15, 0.15 )
 
 [node name="b_direita" type="TextureButton" parent="b_chutes"]
@@ -314,26 +401,27 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 190.0
-margin/top = 0.0
-margin/right = 273.0
-margin/bottom = 94.0
+margin/left = 747.0
+margin/top = 32.0
+margin/right = 830.0
+margin/bottom = 126.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
+textures/normal = ExtResource( 9 )
 params/scale = Vector2( 0.15, 0.15 )
 
 [node name="JanelaTeste" type="Panel" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 138.0
-margin/top = 94.0
-margin/right = 527.0
-margin/bottom = 361.0
+margin/left = 1038.0
+margin/top = 9.0
+margin/right = 1271.0
+margin/bottom = 278.0
 
 [node name="title" type="Label" parent="JanelaTeste"]
 
@@ -342,10 +430,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 theme/theme = ExtResource( 3 )
-margin/left = 98.0
-margin/top = 21.0
-margin/right = 314.0
-margin/bottom = 51.0
+margin/left = 10.0
+margin/top = 27.0
+margin/right = 226.0
+margin/bottom = 57.0
 text = "Escolha onde chutar"
 percent_visible = 1.0
 lines_skipped = 0
@@ -433,14 +521,15 @@ max_lines_visible = -1
 
 [node name="janelaPlacar" type="Panel" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 704.0
-margin/top = 102.0
-margin/right = 1029.0
-margin/bottom = 330.0
+margin/left = 1052.0
+margin/top = 403.0
+margin/right = 1275.0
+margin/bottom = 633.0
 
 [node name="title" type="Label" parent="janelaPlacar"]
 
@@ -595,3 +684,4 @@ lines_skipped = 0
 max_lines_visible = -1
 
 
+[editable path="goalKeeper"]

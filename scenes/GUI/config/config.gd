@@ -1,62 +1,74 @@
 extends Node
 
 var root
+var error = [false,0] # Some error happened, so we need stop program. Second coordinate represents the erro number
 
 
 func _button_avancar_pressed():
 	root.goToScene("res://scenes/GUI/choose_game/choose_game.tscn")
 
-func _button_loadPackage_pressed(teste):
-	print(teste)
-#	get_node("/root/globalScript").loadPackge(teste)
+func _button_loadPackage_pressed(pathDir):
+	var strPackage = ""
+	error = [false,0]
+	strPackage = "Carregando o pacote: " + pathDir
+	if(globalConfig.loadPacketConfFiles(pathDir) != OK):
+		get_node("Log_packets").set_text("\nError no carregamento do arquivo")
+		error = [true,1]
+		return !OK
+	for i in range(0,globalConfig.level.size()):
+		if !globalConfig.level[i].has("limitPlays"):
+			error = [true,0]
+			strPackage += "\nError fase "+str(i)+", ausência de campo \"limitPlays\" "
+		if !globalConfig.level[i].has("readSequ"):
+			error = [true,0]
+			strPackage += "\nError fase "+str(i)+", ausência de campo \"readSeq\" "
+		elif globalConfig.level[i]["readSequ"] == "false" && !globalConfig.level[i].has("tree"):
+				error = [true,0]
+				strPackage += "\nError fase "+str(i)+", ausência de campo \"tree\" "
+		elif globalConfig.level[i]["readSequ"] == "true" && !globalConfig.level[i].has("sequ"):
+			error = [true,0]
+			strPackage += "\nError fase "+str(i)+", ausência de campo \"seque\" "
+			
+		if globalConfig.level[i]["readSequ"] == "false" && globalConfig.get_tree(i) == null:
+			error = [true,0]
+			strPackage += "\nError fase "+str(i)+", leitura da árvore"
+	if error[0]: 
+		get_node("b_avancar").hide()
+	else:
+		strPackage += "\nCarregado..."
+		get_node("b_avancar").show()
+	get_node("Log_packets").set_text(strPackage)
+	return OK
 
 func sair():
 	root.quit()
-	
-func loadPacketNames():
-	var dir = Directory.new()
-	var dicPackets = {}
-	# abrir o diretorio user:// onde estao os pacotes
-	if  dir.open( "user://packets" ) == OK:
-		# e encontrar todos os pacotes disponiveis no diretorio
-		dir.list_dir_begin()
-		var fileName = dir.get_next()
-		while (fileName != ""):
-			if (fileName == "." || fileName == ".."):
-				fileName = dir.get_next()
-				continue
-			if dir.current_is_dir():
-				# encontrado um diretorio de pacotes
-				dicPackets[fileName] = dir.get_current_dir() + "/" + fileName
-				fileName = dir.get_next()
-			else:
-				# se nao existe o diretorio, gravar no log
-				print("Erro: não   existe o diretório packets em ", OS.get_data_dir())
-		if dicPackets.size() == 0:
-			print("Erro: não existem pacotes no diret������ório ", OS.get_data_dir())
-	return dicPackets
+
 
 func _ready():
-	var packets = loadPacketNames()
+	
+	var packets 
 	var buttonSize = 55
 	var pos_y = 80
+	
+	root = get_node("/root/globalScript")
+	globalConfig = get_node("/root/globalConfig")
+	
+	packets = globalConfig.loadPacketNames()
 	# Called every time the node is added to the scene.
 	# Initialization here
 	#set_process(true)
 	if packets.size() > 0:
 		var i = 0
-		# Inicialmente só iremos apresentar os 9 primeiros pacotes,
-		#depois podemos pensar em algo mais elaborado
+		# At this momment, we show the first nine packages
 		if packets.size() < 9 : pos_y = pos_y + (get_node("Panel").get_size().y - pos_y - packets.size()*buttonSize)/2
 		for key in packets:
 			if i > 8 : break
 			pos_y = createButton(key,pos_y,packets[key])
 			i += 1
 			
-
-	root = get_node("/root/globalScript")
-	get_node("avancar").connect("pressed",self,"_button_avancar_pressed")
-	get_node("sair").connect("pressed",self,"sair")
+	get_node("b_avancar").connect("pressed",self,"_button_avancar_pressed")
+	get_node("b_avancar").hide()
+	get_node("b_sair").connect("pressed",self,"sair")
 	#OS.set_window_fullscreen(true)
 
 #func _process(delta):

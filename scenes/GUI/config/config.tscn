@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scenes/GUI/config/config.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_intro.png" type="Texture" id=2]
@@ -60,7 +60,14 @@ font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 10 )
 
-[node name="raiz_cena_itnroducao" type="Node"]
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 15
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 10 )
+
+[node name="raiz_cena_introducao" type="Node"]
 
 script/script = ExtResource( 1 )
 
@@ -115,7 +122,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="sair" type="TextureButton" parent="."]
+[node name="b_sair" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -131,7 +138,7 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 params/scale = Vector2( 0.25, 0.25 )
 
-[node name="Label" type="Label" parent="sair"]
+[node name="Label" type="Label" parent="b_sair"]
 
 anchor/left = 3
 anchor/top = 1
@@ -153,7 +160,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="avancar" type="TextureButton" parent="."]
+[node name="b_avancar" type="TextureButton" parent="."]
 
 anchor/left = 3
 anchor/top = 1
@@ -173,7 +180,7 @@ shortcut = null
 textures/normal = ExtResource( 5 )
 params/scale = Vector2( 0.5, 0.25 )
 
-[node name="Label" type="Label" parent="avancar"]
+[node name="Label" type="Label" parent="b_avancar"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -193,6 +200,7 @@ max_lines_visible = -1
 
 [node name="LOGOS" type="Panel" parent="."]
 
+editor/display_folded = true
 anchor/left = 1
 anchor/top = 3
 anchor/right = 1
@@ -277,6 +285,23 @@ margin/right = 216.0
 margin/bottom = 196.0
 custom_fonts/font = SubResource( 6 )
 text = "Apoio"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Log_packets" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 29.0
+margin/top = 278.0
+margin/right = 361.0
+margin/bottom = 657.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 1, 0.9375, 0, 1 )
+autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

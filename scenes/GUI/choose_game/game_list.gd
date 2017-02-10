@@ -1,10 +1,10 @@
 extends Panel
 
-var root
+var globalScript
+var globalConfig
 var choosed = false
 var cena
 func _button_baseMotora_pressed():
-	#root.nextScene()
 	choosed = true;
 	cena = "res://scenes/base_motora/base_motora.tscn"
 	get_node("b_baseMotora").hide()
@@ -14,10 +14,9 @@ func _button_baseMotora_pressed():
 	get_node("b_continuar").show()
 
 func _button_baseMotoraTempo_pressed():
-	root.nextScene()
+	globalScript.nextScene()
 
 func _button_jogoGoleiro_pressed():
-	#root.goToScene("res://jogo_goleiro/nivel01.tscn")
 	choosed = true;
 	cena = "res://scenes/jogo_goleiro/nivel01.tscn"
 	get_node("b_baseMotora").hide()
@@ -30,17 +29,19 @@ func _button_baseMemoria_pressed():
 	pass
 
 func _button_continuar_pressed():
-	print(get_node("nomeUser").get_text())
-	if choosed: root.goToScene(cena)
+	if get_node("nomeUser").get_text() != "": 
+		globalConfig.set_playerName(get_node("nomeUser").get_text())
+		if choosed: globalScript.goToScene(cena)
 	
 func _quit():
-	root.quit()
+	globalScript.quit()
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	set_process(true)
-	root = get_node("/root/globalScript")
+	globalScript = get_node("/root/globalScript")
+	globalConfig = get_node("/root/globalConfig")
 	get_node("b_baseMotora").connect("pressed",self,"_button_baseMotora_pressed")
 	#get_node("b_baseMotoraTempo").connect("pressed",self,"_button_baseMotoraTempo_pressed")
 	get_node("b_jogoGoleiro").connect("pressed",self,"_button_jogoGoleiro_pressed")
@@ -51,4 +52,4 @@ func _ready():
 	#get_node("b_continuar").hide()
 
 func _process(delta):
-	if Input.is_action_pressed("ui_enter_name") && choosed : root.nextScene()
+	if Input.is_action_pressed("ui_enter_name") && choosed : globalScript.nextScene()

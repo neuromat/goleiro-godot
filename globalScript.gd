@@ -23,7 +23,8 @@ func genSeq(size, tree):
 	randomize()
 	var st = Tree.new(tree)
 	st.disparo()
-	for i in range(1,size-1):
+
+	for i in range(st.estado.length(),size):
 		st.prox()
 		#print(st.prox())
 	#print(st.estado)
@@ -42,7 +43,7 @@ class Tree:
 		tam = desc.size()
 		#  internamente armazenamos a acumulada
 		for v in desc.values():
-			for i in 	range(1,v.size()):
+			for i in range(1,v.size()):
 				v[i] += v[i-1]
 
 	# Seleciona o próximo valor para o sufixo idx
