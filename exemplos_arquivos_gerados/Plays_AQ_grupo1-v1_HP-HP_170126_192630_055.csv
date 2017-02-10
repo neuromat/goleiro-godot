@@ -1,0 +1,15 @@
+game,_AQ_
+playId,grupo1-v1
+playerAlias,josinha,HP-HP_170126_192630_055
+totalPlays,5
+totalCorrect,2
+successRate,0.2
+minHits,2
+gameMode, readTree
+status, OK
+waitedResult,optionChosen,correct,movementTime,decisionTime
+2,2,True,7.751809,7.751809
+0,0,True,1.22071,1.22071
+0,1,False,1.0209,1.0209
+2,1,False,2.141583,2.141583
+2,1,False,0.8468873,0.8468873

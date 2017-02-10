@@ -1,0 +1,25 @@
+game,_JM_
+playId,grupo1-v1
+playerAlias,j,HP-HP_170130_165113_808
+totalPlays,16
+totalCorrect,12
+successRate,0.7
+gameMode, readSequence
+status, OK
+waitedResult,optionChosen,correct,movementTime,decisionTime
+0,0,True,13.28995,13.28995
+0,0,True,3.300708,3.300708
+2,1,False,3.536299,3.536299
+2,2,True,3.224894,3.224894
+1,1,True,5.627703,5.627703
+0,0,True,5.054701,5.054701
+0,0,True,4.755341,4.755341
+2,2,True,2.614778,2.614778
+1,2,False,2.639365,2.639365
+1,2,False,3.760625,3.760625
+1,1,True,7.643499,7.643499
+0,0,True,59.73492,59.73492
+0,0,True,2.558597,2.558597
+2,1,False,3.286246,3.286246
+2,2,True,3.119625,3.119625
+1,1,True,3.012963,3.012963
