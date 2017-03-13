@@ -263,3 +263,18 @@ waitedResult,optionChosen,correct,movementTime,decisionTime
 2,1,False,3.286246,3.286246
 2,2,True,3.119625,3.119625
 1,1,True,3.012963,3.012963
+game,_JG_
+playId,grupo1-v2
+playerAlias,SDFSDF,HP-HP_2017313_1780_922
+totalPlays,5
+totalCorrect,2
+successRate,*** >0<
+minHits, ?????
+gameMode,readTree
+status,OK
+waitedResult,optionChosen,correct,movementTime,decisionTime
+2,2,True,1.287998,-----
+0,0,True,0.0627,-----
+0,1,False,0.167003,-----
+1,2,False,0,-----
+2,0,False,0.36824,-----

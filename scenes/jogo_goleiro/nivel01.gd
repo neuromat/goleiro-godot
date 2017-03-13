@@ -19,6 +19,7 @@ var tree = {
 	"12":[1,0,0],
 	"22":[0,1,0]
 }
+
 var time = 0
 var historicPlays = ""
 
@@ -71,6 +72,7 @@ func _updatePlacar():
 
 func _quit():
 	globalScript.quit()
+	globalServer.disconnect()
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -78,7 +80,8 @@ func _ready():
 	set_process(true)
 	globalScript = get_node("/root/globalScript")
 	globalConfig = get_node("/root/globalConfig")
-	
+	globalServer = get_node("/root/globalServer")
+
 	# Temporário só para fazer os testes...
 	globalConfig.loadPacketConfFiles("user://packets/Pacote1")
 
@@ -110,6 +113,7 @@ func _process(delta):
 			# We achieve the maximum number of defense. Stop the "process" mode.
 			if qntChutes == defenseSeq.length():
 				saveData("OK")
+				globalServer.connect()
 				set_process(false)
 				_button_fimJogo_pressed()
 			else:
@@ -145,6 +149,6 @@ func saveData(callMode):
 	
 	fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+globalConfig.get_playerName()+"_"+strDateTime+"_"+randomFlag
 	var file = File.new()
-	file.open("user://"+fileName+".csv",File.WRITE)
+	file.open("user://toSend/"+fileName+".csv",File.WRITE)
 	file.store_string(strData)
 	file.close()

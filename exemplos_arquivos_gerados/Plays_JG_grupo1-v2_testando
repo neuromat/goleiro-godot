@@ -1,0 +1,15 @@
+game,_JG_
+playId,grupo1-v2
+playerAlias,testando o Testadorç,HP-HP_2017313_17596_482
+totalPlays,5
+totalCorrect,0
+successRate,*** >0<
+minHits, ?????
+gameMode,readTree
+status,OK
+waitedResult,optionChosen,correct,movementTime,decisionTime
+0,2,False,1.468112,-----
+2,0,False,0.066604,-----
+2,1,False,0.017694,-----
+1,0,False,0.08658,-----
+0,2,False,0.618965,-----

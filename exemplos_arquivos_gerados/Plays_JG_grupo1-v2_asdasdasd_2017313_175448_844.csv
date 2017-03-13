@@ -1,0 +1,15 @@
+game,_JG_
+playId,grupo1-v2
+playerAlias,asdasdasd,HP-HP_2017313_175448_844
+totalPlays,5
+totalCorrect,0
+successRate,*** >0<
+minHits, ?????
+gameMode,readTree
+status,OK
+waitedResult,optionChosen,correct,movementTime,decisionTime
+1,2,False,1.392605,-----
+2,0,False,0.218292,-----
+0,1,False,0.018847,-----
+0,2,False,0.266898,-----
+1,0,False,0.032086,-----
