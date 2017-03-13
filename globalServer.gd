@@ -42,7 +42,8 @@ func takeFile():
 		return ""
 
 func disconnect():
-	connection.disconnect()
+	if connection.is_connected():
+		connection.disconnect()
 	set_process(false)
 
 func connect():
