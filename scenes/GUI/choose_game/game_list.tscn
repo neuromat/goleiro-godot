@@ -23,15 +23,15 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-bg_color = Color( 0.941406, 0.783279, 0.783279, 1 )
-light_color = Color( 1, 1, 1, 1 )
-dark_color = Color( 0.933594, 0.725723, 0.725723, 1 )
+bg_color = Color( 0.714844, 0.714844, 0.714844, 1 )
+light_color = Color( 0.972656, 0.972656, 0.972656, 1 )
+dark_color = Color( 0.265625, 0.265625, 0.265625, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
@@ -89,7 +89,6 @@ script/script = ExtResource( 2 )
 
 [node name="nomeUser" type="LineEdit" parent="."]
 
-visibility/visible = false
 anchor/left = 3
 anchor/right = 3
 focus/ignore_mouse = false
@@ -100,19 +99,21 @@ margin/left = 120.5
 margin/top = 130.0
 margin/right = -129.5
 margin/bottom = 165.0
-custom_styles/normal = SubResource( 2 )
+custom_styles/normal = SubResource( 8 )
 custom_fonts/font = SubResource( 3 )
-custom_colors/selection_color = Color( 0.957031, 0.571976, 0.571976, 1 )
-custom_colors/cursor_color = Color( 0.363281, 0.153259, 0.153259, 1 )
-custom_colors/font_color_selected = Color( 0.246094, 0.103821, 0.103821, 1 )
-custom_colors/font_color = Color( 0.914062, 0.032135, 0.032135, 1 )
+custom_colors/selection_color = Color( 0.78125, 0.78125, 0.78125, 1 )
+custom_colors/cursor_color = Color( 0.0466919, 0.664062, 0.0708079, 1 )
+custom_colors/font_color_selected = Color( 0.274353, 0.484375, 0.435151, 1 )
+custom_colors/font_color = Color( 0, 0.277344, 0.0303345, 1 )
 placeholder/alpha = 0.6
+align = 1
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 
 [node name="b_baseMotora" type="TextureButton" parent="."]
 
+visibility/visible = false
 anchor/left = 3
 anchor/right = 3
 focus/ignore_mouse = false
@@ -247,5 +248,7 @@ text = "Continuar"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[connection signal="text_changed" from="nomeUser" to="." method="_on_nomeUser_text_changed"]
 
 

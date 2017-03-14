@@ -3,7 +3,7 @@ extends Panel
 var globalScript
 var globalConfig
 var choosed = false
-var cena
+var cena = ""
 func _button_baseMotora_pressed():
 	choosed = true;
 	cena = "res://scenes/base_motora/base_motora.tscn"
@@ -24,13 +24,17 @@ func _button_jogoGoleiro_pressed():
 	get_node("b_sair").hide()
 	get_node("nomeUser").show()
 	get_node("b_continuar").show()
+	get_node("nomeUser").grab_focus()
+	#get_node("nomeUser").connect("text_changed",self,"teste")
 
-func _button_baseMemoria_pressed():
+	
+func _button_baseMemoria_pressed(value):
 	pass
 
 func _button_continuar_pressed():
 	if get_node("nomeUser").get_text() != "": 
 		globalConfig.set_playerName(get_node("nomeUser").get_text())
+		print(get_node("nomeUser").get_text())
 		if choosed: globalScript.goToScene(cena)
 	
 func _quit():
@@ -48,8 +52,28 @@ func _ready():
 	#get_node("b_baseMemoria").connect("pressed",self,"_button_baseMemoria_pressed")
 	get_node("b_continuar").connect("pressed",self,"_button_continuar_pressed")
 	get_node("b_sair").connect("pressed",self,"_quit")
+	get_node("b_sair").connect("pressed",self,"_quit")
+	
 	get_node("nomeUser").hide()
+
 	#get_node("b_continuar").hide()
 
 func _process(delta):
-	if Input.is_action_pressed("ui_enter_name") && choosed : globalScript.nextScene()
+	if Input.is_action_pressed("ui_enter_name") && choosed  && cena != "": _button_continuar_pressed()
+
+func _on_nomeUser_text_changed( text ):
+	# Aqui vai ficar a checagem do texto que será digitado no campo "nome"
+	var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\@"
+	var size = text.length()
+	if size > 0:
+		for i in avoidChars:
+			if text[size-1] == i:
+				text = text.substr(0,size-1)
+				get_node("nomeUser").set_text(text)
+				get_node("nomeUser").set_cursor_pos(size-1)
+				break;
+
+	if text.length() > 15 : 
+		text = text.substr(0,15)
+		get_node("nomeUser").set_text(text)
+		get_node("nomeUser").set_cursor_pos(15)

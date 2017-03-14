@@ -3,6 +3,7 @@
 from socketserver import *
 import os  
 
+
 TCPServer.allow_reuse_address = True
 
 class MyTCPHandler(StreamRequestHandler):
@@ -24,6 +25,7 @@ class MyTCPHandler(StreamRequestHandler):
 
 				if self.data.startswith(b"Name"):
 					fileName = data.split()[1]
+					print(fileName)
 				else: fileContent += data
 
 
@@ -40,7 +42,6 @@ class MyTCPHandler(StreamRequestHandler):
 		if streamData == False:
 			print("Enviando... OK_STREAM\n")
 			self.wfile.write(b"OK_STREAM")
-
 server = TCPServer(("127.0.0.1", 3560), MyTCPHandler)
 server.serve_forever()
 

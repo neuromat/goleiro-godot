@@ -6,7 +6,7 @@ var connection # your connection (StreamPeerTCP) object
 var connected = false
 var timeout = 5
 var wait = false
-var currentFileName
+var currentFileName = ""
 
 
 func _ready():

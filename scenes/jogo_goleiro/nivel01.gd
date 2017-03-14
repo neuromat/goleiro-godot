@@ -147,8 +147,22 @@ func saveData(callMode):
 	strData += "waitedResult,optionChosen,correct,movementTime,decisionTime\n"
 	strData += historicPlays
 	
-	fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+globalConfig.get_playerName()+"_"+strDateTime+"_"+randomFlag
+	var playerName = globalConfig.get_playerName()
+	var restrictFileName = changeFileName(playerName)
+	print("Antes: "+playerName +"\n Depois: "+restrictFileName)
+	fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
 	var file = File.new()
-	file.open("user://toSend/"+fileName+".csv",File.WRITE)
+	print("user://toSend/"+fileName+".csv")
+	var inteiro = file.open("user://toSend/"+fileName+".csv",File.WRITE)
+	print (str(inteiro))
 	file.store_string(strData)
 	file.close()
+	
+func changeFileName(fileName):
+	var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\ @"
+	for i in avoidChars: 
+		for j in range(fileName.length()):
+			if fileName[j] == i: fileName[j] = "X"
+	return fileName
+	
+	
