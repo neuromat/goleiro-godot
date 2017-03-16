@@ -6,7 +6,7 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 5
+var animSpeed = 1
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
@@ -22,6 +22,10 @@ var tree = {
 
 var time = 0
 var historicPlays = ""
+
+const animGoalKepper = "goalKeeper/Goleiro/Animação-Goleiro"
+const animKicker = "Kicker/Cobrador/AnimationPlayer"
+const animBall = "ball/Bola/Sprite/AnimationPlayer"
 
 func _button_voltaMenu_pressed():
 	globalScript.goToScene("res://scenes/GUI/choose_game/choose_game.tscn")
@@ -58,10 +62,18 @@ func _resultKick():
 	get_node("JanelaTeste/l_chute").set_text(chutes[kickSeq[numKicks-1]])
 	
 func _button_kick_pressed(kick):
-	var defesas = {"0":"Defendeu-Esquerda", "1":"Defendeu-Meio", "2":"Defendeu-Direita"}
+	var defesas = {"0":"Defendeu-Esquerda", "1":"Defendeu-Meio", "2":"Defendeu-Direita", "3":"Errou-Esquerda", "4":"Rest", "5":"Errou-Direita"}
+	var erros = {"0":"Errou-Esquerda", "1":"Errou-Esquerda", "2":"Errou-Direita"}
 	get_node("b_chutes").hide()
 	lockInput = true
-	get_node("goalKeeper/Animação").play(defesas[kick])
+	if kick == kickSeq[numKicks]: 
+		get_node(animGoalKepper).play(defesas[kick])
+		get_node(animKicker).play("Cobrador")
+		get_node(animBall).play(defesas[kick])
+	else:
+		get_node(animGoalKepper).play(erros[kick])
+		get_node(animKicker).play("Cobrador")
+		get_node(animBall).play(erros[kickSeq[numKicks]])
 	defenseSeq += kick
 	_resultKick()
 
@@ -97,7 +109,7 @@ func _ready():
 	get_node("b_chutes/b_esquerda").connect("pressed",self,"_button_kick_pressed",["0"])
 	get_node("b_chutes/b_direita").connect("pressed",self,"_button_kick_pressed",["2"])
 	get_node("janelaFim").hide()
-	get_node("goalKeeper/Animação").set_speed(animSpeed)
+	#get_node(animGoalKepper).set_speed(animSpeed)
 	get_node("janelaPlacar/l_numTotalChutes").set_text(str(qntChutes))
 	#OS.set_window_fullscreen(true)
 	
@@ -108,8 +120,10 @@ func _process(delta):
 
 	# a variável lockInput é para travar as setas de chute
 	if lockInput == true:
-		if !get_node("goalKeeper/Animação").is_playing() :
-			get_node("goalKeeper/Animação").seek(0,true)
+		if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing() :
+			get_node(animGoalKepper).seek(0,true)
+			get_node(animBall).seek(0,true)
+			get_node(animKicker).seek(0,true)
 			# We achieve the maximum number of defense. Stop the "process" mode.
 			if qntChutes == defenseSeq.length():
 				saveData("OK")
