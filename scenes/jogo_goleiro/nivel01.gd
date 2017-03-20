@@ -6,10 +6,15 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 1
+var animSpeed = 2
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
+var anim = {}
+var timeControlAnim =0
+var savedGame = false
+var defense = {"0":"Defendeu-Esquerda", "1":"Defendeu-Meio", "2":"Defendeu-Direita"}
+var goal = {"0":"Errou-Esquerda", "1":"Errou-Meio", "2":"Errou-Direita"}
 var tree = {
 	"00":[0,1,0],
 	"10":[0,0,1],
@@ -34,12 +39,13 @@ func _button_nextLvl_pressed():
 	#globalScript.goToScene("res://scenes/jogo_goleiro/nivel02.tscn")
 	pass
 	
-func _button_fimJogo_pressed():
+func _button_fimJogo_pressed(callMode):
 	get_node("janelaFim").show()
 	get_node("b_endGame").hide()
 	get_node("janelaSequencia").hide()
 	get_node("JanelaTeste").hide()
 	get_node("janelaPlacar").hide()
+	saveData(callMode)
 
 func _resultKick():
 	var chutes = {"0":"Esquerda", "1":"Centro", "2":"Direita"}
@@ -51,7 +57,6 @@ func _resultKick():
 		get_node("JanelaTeste/l_result").set_text("Defendeu")
 		numDefenses += 1
 		historicPlays += "True,"
-
 	else:
 		get_node("JanelaTeste/l_result").set_text("Gol")
 		numGols += 1
@@ -60,23 +65,28 @@ func _resultKick():
 	
 	get_node("JanelaTeste/l_goleiro").set_text(chutes[defenseSeq[numKicks-1]])
 	get_node("JanelaTeste/l_chute").set_text(chutes[kickSeq[numKicks-1]])
-	
+
 func _button_kick_pressed(kick):
-	var defesas = {"0":"Defendeu-Esquerda", "1":"Defendeu-Meio", "2":"Defendeu-Direita", "3":"Errou-Esquerda", "4":"Rest", "5":"Errou-Direita"}
-	var erros = {"0":"Errou-Esquerda", "1":"Errou-Esquerda", "2":"Errou-Direita"}
 	get_node("b_chutes").hide()
 	lockInput = true
-	if kick == kickSeq[numKicks]: 
-		get_node(animGoalKepper).play(defesas[kick])
-		get_node(animKicker).play("Cobrador")
-		get_node(animBall).play(defesas[kick])
-	else:
-		get_node(animGoalKepper).play(erros[kick])
-		get_node(animKicker).play("Cobrador")
-		get_node(animBall).play(erros[kickSeq[numKicks]])
 	defenseSeq += kick
+	get_node(animKicker).play("Cobrador")
 	_resultKick()
 
+func animFlow():
+	# This function control animations and return if animations finished or nor.
+	if get_node(animKicker).is_playing() && !get_node(animGoalKepper).is_playing() && !get_node(animBall).is_playing():
+		if get_node(animKicker).get_current_animation_pos() >= 0.99:
+			if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: 
+				get_node(animGoalKepper).play(defense[defenseSeq[numKicks-1]])
+				get_node(animBall).play(defense[defenseSeq[numKicks-1]])
+			else:
+				get_node(animGoalKepper).play(goal[defenseSeq[numKicks-1]])
+				get_node(animBall).play(goal[kickSeq[numKicks-1]])
+
+	if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing(): return false
+	else: return true
+	
 func _updatePlacar():
 	get_node("janelaPlacar/l_numGols").set_text(str(numGols))
 	get_node("janelaPlacar/l_numDefensas").set_text(str(numDefenses))
@@ -84,7 +94,6 @@ func _updatePlacar():
 
 func _quit():
 	globalScript.quit()
-	globalServer.disconnect()
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -101,7 +110,7 @@ func _ready():
 	qntChutes =  globalConfig.get_qntChutes(0)
 	kickSeq = globalScript.genSeq(qntChutes,tree)
 
-	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed")
+	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
 	get_node("janelaFim/b_voltaMenu").connect("pressed",self,"_button_voltaMenu_pressed")
 	get_node("janelaFim/b_nextLvl").connect("pressed",self,"_button_nextLvl_pressed")
 	get_node("janelaFim/b_sairGame").connect("pressed",self,"_quit")
@@ -109,27 +118,29 @@ func _ready():
 	get_node("b_chutes/b_esquerda").connect("pressed",self,"_button_kick_pressed",["0"])
 	get_node("b_chutes/b_direita").connect("pressed",self,"_button_kick_pressed",["2"])
 	get_node("janelaFim").hide()
-	#get_node(animGoalKepper).set_speed(animSpeed)
+	get_node(animGoalKepper).set_speed(animSpeed)
+	get_node(animKicker).set_speed(animSpeed)
+	get_node(animBall).set_speed(animSpeed)
 	get_node("janelaPlacar/l_numTotalChutes").set_text(str(qntChutes))
 	#OS.set_window_fullscreen(true)
 	
 func _process(delta):
 	time += delta
+	timeControlAnim += delta
 	var stringDebug  = "Total de chutes: " +  str(qntChutes) + "\nSequência:\n" + kickSeq + "\nDefesas:\n" + defenseSeq + "\nTree:\n" + str(tree)
 	get_node("janelaSequencia/showSequence").set_text(str(stringDebug))
 
 	# a variável lockInput é para travar as setas de chute
 	if lockInput == true:
-		if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing() :
+		if !animFlow():
 			get_node(animGoalKepper).seek(0,true)
 			get_node(animBall).seek(0,true)
 			get_node(animKicker).seek(0,true)
 			# We achieve the maximum number of defense. Stop the "process" mode.
 			if qntChutes == defenseSeq.length():
-				saveData("OK")
 				globalServer.connect()
 				set_process(false)
-				_button_fimJogo_pressed()
+				_button_fimJogo_pressed("OK")
 			else:
 				lockInput = false
 				get_node("b_chutes").show()
@@ -139,38 +150,39 @@ func _process(delta):
 	if Input.is_action_pressed("ui_left") && !lockInput: _button_kick_pressed("0")
 	if Input.is_action_pressed("ui_right") && !lockInput: _button_kick_pressed("2")
 	_updatePlacar()
-
+	if Input.is_action_pressed("ui_quit"): saveData("INTERRUPTED BY USER")
+	
 func saveData(callMode):
-	var dateTime = OS.get_datetime()
-	var strDateTime = ""
-	var fileName = ""
-	randomize()
-	var randomFlag = str(round(rand_range(0,999)))
-	strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+"_"
-	strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)
-	
-	var strData = "game,_JG_\n"
-	strData += "playId," + globalConfig.get_id(0) + "\n"
-	strData += "playerAlias," + globalConfig.get_playerName() + ",HP-HP_"+strDateTime+"_" + randomFlag + "\n"
-	strData += "totalPlays,"+ str(numKicks) + "\n"
-	strData += "totalCorrect,"+ str(numDefenses) + "\n"
-	strData += "successRate,*** >"+str(numDefenses/numKicks)+"<\n"
-	strData += "minHits, ?????\n"
-	strData += "gameMode," + globalConfig.get_seqMode(0) + "\n"
-	strData += "status," + str(callMode) + "\n"
-	strData += "waitedResult,optionChosen,correct,movementTime,decisionTime\n"
-	strData += historicPlays
-	
-	var playerName = globalConfig.get_playerName()
-	var restrictFileName = changeFileName(playerName)
-	print("Antes: "+playerName +"\n Depois: "+restrictFileName)
-	fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
-	var file = File.new()
-	print("user://toSend/"+fileName+".csv")
-	var inteiro = file.open("user://toSend/"+fileName+".csv",File.WRITE)
-	print (str(inteiro))
-	file.store_string(strData)
-	file.close()
+	if savedGame == false:
+		var dateTime = OS.get_datetime()
+		var strDateTime = ""
+		var fileName = ""
+		randomize()
+		var randomFlag = str(round(rand_range(0,999)))
+		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+"_"
+		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)
+		
+		var strData = "game,_JG_\n"
+		strData += "playId," + globalConfig.get_id(0) + "\n"
+		strData += "playerAlias," + globalConfig.get_playerName() + ",HP-HP_"+strDateTime+"_" + randomFlag + "\n"
+		strData += "totalPlays,"+ str(numKicks) + "\n"
+		strData += "totalCorrect,"+ str(numDefenses) + "\n"
+		if numKicks == 0 : strData += "successRate,*** >-------<\n"
+		else: strData += "successRate,*** >"+str(numDefenses/numKicks)+"<\n"
+		strData += "minHits, ?????\n"
+		strData += "gameMode," + globalConfig.get_seqMode(0) + "\n"
+		strData += "status," + str(callMode) + "\n"
+		strData += "waitedResult,optionChosen,correct,movementTime,decisionTime\n"
+		strData += historicPlays
+		
+		var playerName = globalConfig.get_playerName()
+		var restrictFileName = changeFileName(playerName)
+		fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
+		var file = File.new()
+		var inteiro = file.open("user://toSend/"+fileName+".csv",File.WRITE)
+		file.store_string(strData)
+		file.close()
+		savedGame= true
 	
 func changeFileName(fileName):
 	var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\ @"

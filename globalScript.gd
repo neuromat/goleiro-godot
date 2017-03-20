@@ -14,6 +14,7 @@ func _ready():
 	set_process(true)
 
 func quit():
+	get_node("/root/globalServer").disconnect()
 	get_tree().quit()
 	
 func _process(delta):
