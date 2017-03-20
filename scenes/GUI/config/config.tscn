@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://scenes/GUI/config/config.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_intro.png" type="Texture" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=6]
 [ext_resource path="res://images/logo_neuromat.jpg" type="Texture" id=7]
 [ext_resource path="res://images/logo_amparo.png" type="Texture" id=8]
-[ext_resource path="res://images/logo_Fapesp.png" type="Texture" id=9]
-[ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=10]
+[ext_resource path="res://images/logoAbracoMini.jpg" type="Texture" id=9]
+[ext_resource path="res://images/logo_Fapesp.png" type="Texture" id=10]
+[ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -51,21 +52,21 @@ content_margin/bottom = -1.0
 font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 10 )
+font/font = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=6]
 
 font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 10 )
+font/font = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=7]
 
 font/size = 15
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 10 )
+font/font = ExtResource( 11 )
 
 [node name="raiz_cena_introducao" type="Node"]
 
@@ -200,7 +201,6 @@ max_lines_visible = -1
 
 [node name="LOGOS" type="Panel" parent="."]
 
-editor/display_folded = true
 anchor/left = 1
 anchor/top = 3
 anchor/right = 1
@@ -212,7 +212,7 @@ size_flags/vertical = 2
 margin/left = 278.0
 margin/top = 240.0
 margin/right = 43.0
-margin/bottom = -37.0
+margin/bottom = -79.0
 custom_styles/panel = SubResource( 4 )
 
 [node name="logo_neuromat" type="TextureFrame" parent="LOGOS"]
@@ -243,30 +243,48 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 0
 
-[node name="Sprite 2" type="TextureFrame" parent="LOGOS"]
+[node name="logo_amparo1" type="TextureFrame" parent="LOGOS"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 109.0
-margin/top = 201.0
+margin/left = 73.0
+margin/top = 170.0
 margin/right = 218.0
-margin/bottom = 251.0
+margin/bottom = 212.0
 texture = ExtResource( 9 )
+expand = true
+stretch_mode = 0
+
+[node name="logo_fapesp" type="TextureFrame" parent="LOGOS"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 110.0
+margin/top = 245.0
+margin/right = 219.0
+margin/bottom = 295.0
+texture = ExtResource( 10 )
 expand = true
 stretch_mode = 0
 
 [node name="texto_realizacao" type="Label" parent="LOGOS"]
 
+anchor/left = 1
+anchor/top = 3
+anchor/right = 1
+anchor/bottom = 3
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 127.0
-margin/top = 31.0
-margin/right = 219.0
-margin/bottom = 49.0
+margin/left = 108.0
+margin/top = 128.5
+margin/right = 16.0
+margin/bottom = 109.5
 custom_fonts/font = SubResource( 5 )
 text = "Realização"
 percent_visible = 1.0
@@ -279,10 +297,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 166.0
-margin/top = 178.0
-margin/right = 216.0
-margin/bottom = 196.0
+margin/left = 167.0
+margin/top = 222.0
+margin/right = 217.0
+margin/bottom = 241.0
 custom_fonts/font = SubResource( 6 )
 text = "Apoio"
 percent_visible = 1.0

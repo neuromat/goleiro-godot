@@ -884,6 +884,7 @@ tracks/35/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "upda
 
 [sub_resource type="Animation" id=6]
 
+resource/name = "Errou-Meio"
 length = 1.0
 loop = false
 step = 0.1
@@ -1206,46 +1207,45 @@ transform/scale = Vector2( 0.121151, 0.121151 )
 
 [node name="R-Arm" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( 132.796, -397.222 )
-transform/rot = -26.6087
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 160.545, -384.207 )
+transform/rot = -17.1002
 texture = ExtResource( 1 )
 offset = Vector2( 167.873, 65.3165 )
 
 [node name="R-Forearm" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( 359.19, -138.96 )
-transform/rot = 69.3104
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 426.492, -166.892 )
+transform/rot = 11.7497
 texture = ExtResource( 2 )
 offset = Vector2( 185.484, 4.51682 )
 
 [node name="R-Hand" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( 499.012, -452.475 )
-transform/rot = 65.5008
+transform/pos = Vector2( 766.088, -217.059 )
+transform/rot = 7.94015
 transform/scale = Vector2( 0.999998, 0.999998 )
 texture = ExtResource( 3 )
 offset = Vector2( 79.9703, -9.04926 )
 
 [node name="L-Arm" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( -191.615, -360.525 )
-transform/rot = 35.6975
+transform/pos = Vector2( -165.827, -375.866 )
+transform/rot = 22.3035
 texture = ExtResource( 4 )
 offset = Vector2( -159.407, 57.7639 )
 
 [node name="L-Forearm" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( -377.668, -67.1934 )
-transform/rot = -56.3999
+transform/pos = Vector2( -414.769, -133.611 )
+transform/rot = -4.23358
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 offset = Vector2( -170.473, 0.74118 )
 
 [node name="L-Hand" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( -575.637, -319.893 )
-transform/rot = -54.7781
+transform/pos = Vector2( -735.778, -132.255 )
+transform/rot = -2.61183
 transform/scale = Vector2( 0.999999, 0.999999 )
 texture = ExtResource( 6 )
 offset = Vector2( -90.6704, -16.4471 )
@@ -1253,43 +1253,44 @@ offset = Vector2( -90.6704, -16.4471 )
 [node name="L-Thigh" type="Sprite" parent="Goleiro"]
 
 transform/pos = Vector2( -55.9492, 1.15271 )
-transform/rot = -49.9681
+transform/rot = -36.4217
 texture = ExtResource( 7 )
 offset = Vector2( -51.6575, 167.534 )
 
 [node name="R-Thigh" type="Sprite" parent="Goleiro"]
 
 transform/pos = Vector2( 63.5498, 2.09392 )
-transform/rot = 58.4403
+transform/rot = 44.5497
 transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 offset = Vector2( 44.1594, 145.898 )
 
 [node name="R-Leg" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( 430.477, 105.479 )
+transform/pos = Vector2( 394.927, 190.543 )
 transform/rot = 3.4671
 texture = ExtResource( 9 )
 offset = Vector2( 33.1703, 228.749 )
 
 [node name="L-Leg" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( -409.653, 158.161 )
-transform/rot = -1.4454
+transform/pos = Vector2( -363.037, 236.642 )
+transform/rot = -1.4455
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 10 )
 offset = Vector2( -38.5699, 204.246 )
 
 [node name="L-Foot" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( -526.623, 568.523 )
-transform/rot = 0.431141
+transform/pos = Vector2( -480.008, 647.004 )
+transform/rot = 0.431039
 transform/scale = Vector2( 1.13398, 1 )
 texture = ExtResource( 11 )
 offset = Vector2( -51.3395, 29.927 )
 
 [node name="R-Foot" type="Sprite" parent="Goleiro"]
 
-transform/pos = Vector2( 567.459, 565.958 )
+transform/pos = Vector2( 531.909, 651.022 )
 transform/rot = 0.35682
 transform/scale = Vector2( 1.13026, 1 )
 texture = ExtResource( 12 )
@@ -1304,7 +1305,7 @@ __meta__ = { "_edit_bone_":true, "_edit_ik_":true }
 
 material/use_parent = true
 transform/pos = Vector2( -2.67761, -72.2699 )
-transform/rot = 4.98491
+transform/rot = -0.00478007
 texture = ExtResource( 14 )
 offset = Vector2( 6.01794, -337.748 )
 __meta__ = { "_edit_bone_":true }
@@ -1312,14 +1313,14 @@ __meta__ = { "_edit_bone_":true }
 [node name="L-Arm" type="RemoteTransform2D" parent="Goleiro/Hip/Torso"]
 
 transform/pos = Vector2( -163.175, -303.582 )
-transform/rot = 30.7126
+transform/rot = 22.3083
 remote_path = NodePath("../../../L-Arm")
 __meta__ = { "_edit_bone_":true, "_edit_ik_":true }
 
 [node name="L-Forearm" type="RemoteTransform2D" parent="Goleiro/Hip/Torso/L-Arm"]
 
 transform/pos = Vector2( -322.256, 129.654 )
-transform/rot = -92.0974
+transform/rot = -26.5371
 remote_path = NodePath("../../../../L-Forearm")
 __meta__ = { "_edit_bone_":true }
 
@@ -1339,14 +1340,14 @@ __meta__ = { "_edit_bone_":true }
 [node name="R-Arm" type="RemoteTransform2D" parent="Goleiro/Hip/Torso"]
 
 transform/pos = Vector2( 163.197, -311.951 )
-transform/rot = -31.5936
+transform/rot = -17.0954
 remote_path = NodePath("../../../R-Arm")
 __meta__ = { "_edit_bone_":true, "_edit_ik_":true }
 
 [node name="R-Forearm" type="RemoteTransform2D" parent="Goleiro/Hip/Torso/R-Arm"]
 
 transform/pos = Vector2( 318.09, 129.508 )
-transform/rot = 95.9191
+transform/rot = 28.8499
 remote_path = NodePath("../../../../R-Forearm")
 __meta__ = { "_edit_bone_":true }
 
@@ -1367,14 +1368,14 @@ __meta__ = { "_edit_bone_":true }
 [node name="L-Thigh" type="RemoteTransform2D" parent="Goleiro/Hip"]
 
 transform/pos = Vector2( -55.9492, 1.15271 )
-transform/rot = -49.9681
+transform/rot = -36.4217
 remote_path = NodePath("../../L-Thigh")
 __meta__ = { "_edit_bone_":true, "_edit_ik_":true }
 
 [node name="L-Leg" type="RemoteTransform2D" parent="Goleiro/Hip/L-Thigh"]
 
 transform/pos = Vector2( -107.288, 371.816 )
-transform/rot = 48.5227
+transform/rot = 34.9762
 remote_path = NodePath("../../../L-Leg")
 __meta__ = { "_edit_bone_":true }
 
@@ -1394,14 +1395,14 @@ __meta__ = { "_edit_bone_":true }
 [node name="R-Thigh" type="RemoteTransform2D" parent="Goleiro/Hip"]
 
 transform/pos = Vector2( 63.5498, 2.09392 )
-transform/rot = 58.4403
+transform/rot = 44.5497
 remote_path = NodePath("../../R-Thigh")
 __meta__ = { "_edit_bone_":true, "_edit_ik_":true }
 
 [node name="R-Leg" type="RemoteTransform2D" parent="Goleiro/Hip/R-Thigh"]
 
 transform/pos = Vector2( 103.951, 366.767 )
-transform/rot = -54.9732
+transform/rot = -41.0826
 remote_path = NodePath("../../../R-Leg")
 __meta__ = { "_edit_bone_":true }
 
@@ -1428,7 +1429,7 @@ anims/Defendeu-Esquerda = SubResource( 2 )
 anims/Defendeu-Meio = SubResource( 3 )
 anims/Errou-Direita = SubResource( 4 )
 anims/Errou-Esquerda = SubResource( 5 )
-anims/Rest = SubResource( 6 )
+anims/Errou-Meio = SubResource( 6 )
 next/Defendeu-Direita = ""
 playback/active = true
 playback/speed = 1.0

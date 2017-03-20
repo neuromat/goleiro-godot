@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://images/goleiro.png" type="Texture" id=2]
+[ext_resource path="res://scenes/GUI/choose_game/images/tutorial_01.jpg" type="Texture" id=1]
+[ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/GUI/choose_game/images/tutorial_03.jpg" type="Texture" id=3]
+[ext_resource path="res://scenes/GUI/choose_game/images/tutorial_02.jpg" type="Texture" id=4]
+[ext_resource path="res://scenes/GUI/choose_game/images/tutorial_04.jpg" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
-font/size = 18
+font/size = 30
+extra_spacing/bottom = -5
+extra_spacing/char = 1
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 1 )
+font/font = ExtResource( 2 )
 
-[node name="raiz_tutorial" type="Panel"]
+[node name="raiz_tutorial" type="Control"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -18,30 +23,135 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 278.0
-margin/bottom = 362.0
+margin/right = 0.0
+margin/bottom = 0.0
 
-[node name="Label" type="Label" parent="."]
+[node name="tutorial 01" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 375.0
+margin/bottom = 200.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 0
+
+[node name="text01" type="Label" parent="tutorial 01"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 89.0
-margin/top = 19.0
-margin/right = 179.0
-margin/bottom = 49.0
+margin/left = 0.0
+margin/top = 200.0
+margin/right = 375.0
+margin/bottom = 315.0
 custom_fonts/font = SubResource( 1 )
-text = "Tutorial"
+text = "Clique nas setas para\ndecidir em qual direção\no goleiro deve pular"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="tutorial 02" type="TextureFrame" parent="."]
 
-transform/pos = Vector2( 129.792, 108.392 )
-transform/rot = 5.00896e-06
-transform/scale = Vector2( 0.0942603, 0.101391 )
-texture = ExtResource( 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 335.0
+margin/right = 375.0
+margin/bottom = 535.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 0
+
+[node name="text2" type="Label" parent="tutorial 02"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 200.0
+margin/right = 375.0
+margin/bottom = 315.0
+custom_fonts/font = SubResource( 1 )
+text = "Histórico das direções\ndos últimos chutes"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tutorial 03" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 400.0
+margin/top = 0.0
+margin/right = 775.0
+margin/bottom = 200.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 0
+
+[node name="text4" type="Label" parent="tutorial 03"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 200.0
+margin/right = 375.0
+margin/bottom = 315.0
+custom_fonts/font = SubResource( 1 )
+text = "Em cada nível\no batedor irá adotar\numa nova estratégia"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tutorial 04" type="TextureFrame" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 400.0
+margin/top = 335.0
+margin/right = 775.0
+margin/bottom = 535.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 0
+
+[node name="text3" type="Label" parent="tutorial 04"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 200.0
+margin/right = 375.0
+margin/bottom = 315.0
+custom_fonts/font = SubResource( 1 )
+text = "Fique craque nas defesas\ne chegue ao topo"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
