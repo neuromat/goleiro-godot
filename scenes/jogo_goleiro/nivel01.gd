@@ -88,7 +88,6 @@ func animFlow():
 	
 func _updatePlacar():
 	get_node("scoreboard").change(int(numGols),int(numDefenses))
-	print(str(numGols)+" x "+str(numDefenses))
 
 func _quit():
 	globalScript.quit()
@@ -134,6 +133,7 @@ func _process(delta):
 			get_node(animBall).seek(0,true)
 			get_node(animKicker).seek(0,true)
 			# We achieve the maximum number of defense. Stop the "process" mode.
+			_updatePlacar()
 			if qntChutes == defenseSeq.length():
 				globalServer.connect()
 				set_process(false)
@@ -141,7 +141,6 @@ func _process(delta):
 			else:
 				lockInput = false
 				get_node("b_chutes").show()
-				_updatePlacar()
 				time = 0
 		
 
