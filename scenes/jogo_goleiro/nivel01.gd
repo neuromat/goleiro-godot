@@ -6,7 +6,7 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 1
+var animSpeed = 2
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
@@ -87,7 +87,8 @@ func animFlow():
 	else: return true
 	
 func _updatePlacar():
-	get_node("scoreboard").change(numGols,numDefenses)
+	get_node("scoreboard").change(int(numGols),int(numDefenses))
+	print(str(numGols)+" x "+str(numDefenses))
 
 func _quit():
 	globalScript.quit()
