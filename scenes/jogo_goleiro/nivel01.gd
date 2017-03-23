@@ -6,7 +6,7 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 2
+var animSpeed = 1
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
@@ -44,7 +44,6 @@ func _button_fimJogo_pressed(callMode):
 	get_node("b_endGame").hide()
 	get_node("janelaSequencia").hide()
 	get_node("JanelaTeste").hide()
-	get_node("janelaPlacar").hide()
 	saveData(callMode)
 
 func _resultKick():
@@ -88,9 +87,7 @@ func animFlow():
 	else: return true
 	
 func _updatePlacar():
-	get_node("janelaPlacar/l_numGols").set_text(str(numGols))
-	get_node("janelaPlacar/l_numDefensas").set_text(str(numDefenses))
-	get_node("janelaPlacar/l_numTotal").set_text(str(numKicks))
+	get_node("scoreboard").change(numGols,numDefenses)
 
 func _quit():
 	globalScript.quit()
@@ -121,7 +118,6 @@ func _ready():
 	get_node(animGoalKepper).set_speed(animSpeed)
 	get_node(animKicker).set_speed(animSpeed)
 	get_node(animBall).set_speed(animSpeed)
-	get_node("janelaPlacar/l_numTotalChutes").set_text(str(qntChutes))
 	#OS.set_window_fullscreen(true)
 	
 func _process(delta):
@@ -144,12 +140,13 @@ func _process(delta):
 			else:
 				lockInput = false
 				get_node("b_chutes").show()
+				_updatePlacar()
 				time = 0
+		
 
 	if Input.is_action_pressed("ui_down") && !lockInput: _button_kick_pressed("1")
 	if Input.is_action_pressed("ui_left") && !lockInput: _button_kick_pressed("0")
 	if Input.is_action_pressed("ui_right") && !lockInput: _button_kick_pressed("2")
-	_updatePlacar()
 	if Input.is_action_pressed("ui_quit"): saveData("INTERRUPTED BY USER")
 	
 func saveData(callMode):

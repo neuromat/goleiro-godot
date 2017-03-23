@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://scenes/jogo_goleiro/nivel01.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_nivel_01.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://animations/animation_goalkeper/goalkeper.tscn" type="PackedScene" id=9]
 [ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=10]
 [ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=11]
+[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -33,7 +34,7 @@ content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 
 resource/name = "Errou-Meio"
 length = 1.0
@@ -350,7 +351,7 @@ tracks/61/interp = 1
 tracks/61/imported = false
 tracks/61/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.356796, 0.356818 ] }
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -362,13 +363,6 @@ dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
-
-[sub_resource type="DynamicFont" id=5]
-
-font/size = 18
-font/use_mipmaps = true
-font/use_filter = true
-font/font = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=6]
 
@@ -377,7 +371,14 @@ font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 18
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=8]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -390,14 +391,14 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 
 font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=10]
 
 font/size = 18
 font/use_mipmaps = true
@@ -463,10 +464,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 14.0
-margin/top = -2.0
-margin/right = 641.0
-margin/bottom = 238.0
+margin/left = 417.0
+margin/top = 8.0
+margin/right = 1044.0
+margin/bottom = 248.0
 
 [node name="texto" type="Label" parent="janelaSequencia"]
 
@@ -570,10 +571,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1038.0
-margin/top = 9.0
-margin/right = 1271.0
-margin/bottom = 278.0
+margin/left = 13.0
+margin/top = 432.0
+margin/right = 246.0
+margin/bottom = 701.0
 
 [node name="title" type="Label" parent="JanelaTeste"]
 
@@ -671,170 +672,6 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="janelaPlacar" type="Panel" parent="."]
-
-editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 1052.0
-margin/top = 403.0
-margin/right = 1275.0
-margin/bottom = 633.0
-
-[node name="title" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 134.0
-margin/top = 20.0
-margin/right = 208.0
-margin/bottom = 50.0
-text = "Placar"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_gol" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 10.0
-margin/top = 70.0
-margin/right = 160.0
-margin/bottom = 100.0
-text = "Gols:"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_defesas" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 10.0
-margin/top = 110.0
-margin/right = 160.0
-margin/bottom = 140.0
-text = "Defesas:"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_total" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 10.0
-margin/top = 150.0
-margin/right = 160.0
-margin/bottom = 180.0
-text = "Total Chutes:"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_total_chutes" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 10.0
-margin/top = 190.0
-margin/right = 160.0
-margin/bottom = 220.0
-text = "Total:"
-align = 2
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_numGols" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 165.0
-margin/top = 70.0
-margin/right = 215.0
-margin/bottom = 100.0
-text = "----"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_numDefensas" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 165.0
-margin/top = 110.0
-margin/right = 215.0
-margin/bottom = 140.0
-text = "----"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_numTotal" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 165.0
-margin/top = 150.0
-margin/right = 215.0
-margin/bottom = 180.0
-text = "----"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_numTotalChutes" type="Label" parent="janelaPlacar"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 165.0
-margin/top = 190.0
-margin/right = 215.0
-margin/bottom = 220.0
-text = "----"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [node name="ball" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
@@ -857,7 +694,6 @@ transform/rot = 11.7497
 [node name="R-Hand" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( 766.088, -217.06 )
-transform/rot = 7.94015
 transform/scale = Vector2( 0.999998, 0.999998 )
 
 [node name="L-Arm" parent="goalKeeper/Goleiro"]
@@ -868,19 +704,16 @@ transform/rot = 22.3035
 [node name="L-Forearm" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( -414.769, -133.611 )
-transform/rot = -4.23358
 transform/scale = Vector2( 1, 1 )
 
 [node name="L-Hand" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( -735.778, -132.255 )
-transform/rot = -2.61183
 transform/scale = Vector2( 0.999999, 0.999999 )
 
 [node name="L-Thigh" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( -55.9492, 1.15283 )
-transform/rot = -36.4217
 
 [node name="R-Thigh" parent="goalKeeper/Goleiro"]
 
@@ -897,13 +730,11 @@ transform/scale = Vector2( 1, 1 )
 [node name="L-Leg" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( -363.037, 236.642 )
-transform/rot = -1.4455
 transform/scale = Vector2( 1, 1 )
 
 [node name="L-Foot" parent="goalKeeper/Goleiro"]
 
 transform/pos = Vector2( -480.007, 647.004 )
-transform/rot = 0.431039
 transform/scale = Vector2( 1.13398, 1 )
 
 [node name="R-Foot" parent="goalKeeper/Goleiro"]
@@ -911,34 +742,6 @@ transform/scale = Vector2( 1.13398, 1 )
 transform/pos = Vector2( 420.533, 650.255 )
 transform/rot = 0.294006
 transform/scale = Vector2( 1.13026, 1 )
-
-[node name="Torso" parent="goalKeeper/Goleiro/Hip"]
-
-transform/rot = -0.00478007
-
-[node name="L-Arm" parent="goalKeeper/Goleiro/Hip/Torso"]
-
-transform/rot = 22.3083
-
-[node name="L-Forearm" parent="goalKeeper/Goleiro/Hip/Torso/L-Arm"]
-
-transform/rot = -26.5371
-
-[node name="R-Arm" parent="goalKeeper/Goleiro/Hip/Torso"]
-
-transform/rot = -17.0954
-
-[node name="R-Forearm" parent="goalKeeper/Goleiro/Hip/Torso/R-Arm"]
-
-transform/rot = 28.8499
-
-[node name="L-Thigh" parent="goalKeeper/Goleiro/Hip"]
-
-transform/rot = -36.4217
-
-[node name="L-Leg" parent="goalKeeper/Goleiro/Hip/L-Thigh"]
-
-transform/rot = 34.9762
 
 [node name="R-Thigh" parent="goalKeeper/Goleiro/Hip"]
 
@@ -954,7 +757,7 @@ transform/rot = 11.6319
 
 [node name="Animação-Goleiro" parent="goalKeeper/Goleiro"]
 
-anims/Errou-Meio = SubResource( 10 )
+anims/Errou-Meio = SubResource( 4 )
 
 [node name="Kicker" parent="." instance=ExtResource( 10 )]
 
@@ -998,8 +801,8 @@ margin/left = 5.0
 margin/top = 160.0
 margin/right = 250.0
 margin/bottom = 210.0
-custom_styles/hover = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -1016,8 +819,8 @@ margin/left = 75.0
 margin/top = 93.0
 margin/right = 423.0
 margin/bottom = 143.0
-custom_styles/hover = SubResource( 4 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -1034,8 +837,8 @@ margin/left = 250.0
 margin/top = 160.0
 margin/right = 495.0
 margin/bottom = 210.0
-custom_styles/hover = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/hover = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 disabled = true
 toggle_mode = false
 enabled_focus_mode = 2
@@ -1053,11 +856,13 @@ margin/left = 170.0
 margin/top = 40.0
 margin/right = 343.0
 margin/bottom = 59.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Fim do jogo... bla bla"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="scoreboard" parent="." instance=ExtResource( 12 )]
 
 
 [editable path="ball"]

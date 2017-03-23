@@ -8,7 +8,7 @@ func _ready():
 	#get_node("start").connect("pressed",self,"_on_button_pressed")
 
 	OS.set_window_size(Vector2(800,450))
-	OS.set_window_fullscreen(true)
+	OS.set_window_fullscreen(false)
 	set_process(true)
 	#como é a tela de splash, não faz sentido ser fullscreen...
 func _process(delta):
