@@ -459,7 +459,7 @@ flat = false
 
 [node name="janelaSequencia" type="Panel" parent="."]
 
-editor/display_folded = true
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -567,6 +567,7 @@ params/scale = Vector2( 0.15, 0.15 )
 [node name="JanelaTeste" type="Panel" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -675,6 +676,13 @@ max_lines_visible = -1
 [node name="ball" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
+
+[node name="Sprite" parent="ball/Bola"]
+
+transform/pos = Vector2( 3229.83, 1036.16 )
+transform/rot = 0.0
+transform/scale = Vector2( 0.571655, 0.571655 )
+z/z = 0
 
 [node name="goalKeeper" parent="." instance=ExtResource( 9 )]
 

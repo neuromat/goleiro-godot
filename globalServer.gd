@@ -17,10 +17,10 @@ func _ready():
 func checkFilesToSend():
 	var dir = Directory.new()
 	if !dir.dir_exists("user://toSend/") :
-		print("1")
+		#print("1")
 		return false
 	if dir.open("user://toSend/") != OK:
-		print("2")
+		#print("2")
 		return false
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
