@@ -35,12 +35,30 @@ func get_id(fase):
 	
 func get_playerName():
 	return PlayerName
-	
+
+func copyDirectory(from, to):
+	var dir = Directory.new()
+	dir.make_dir_recursive(to)
+	dir.open(from)
+	dir.list_dir_begin()
+	var fileName = dir.get_next()
+	while (fileName != ""):
+		if (fileName == "." || fileName == ".."):
+			fileName = dir.get_next()
+			continue
+		if dir.current_is_dir(): copyDirectory(from+fileName+"/",to+fileName+"/")
+		else: dir.copy(from+fileName,to+fileName)
+		fileName = dir.get_next()
+
 func loadPacketNames():
 	var dir = Directory.new()
 	var dicPackets = {}
+	# Checar se existe algum pacote. Caso contrário, copia o "padrão"
+	if !dir.dir_exists ("user://packets/"): pass
+		copyDirectory("res://defaultPacket/", "user://packets/")
+
 	# abrir o diretorio user:// onde estao os pacotes
-	if  dir.open( "user://packets" ) == OK:
+	if  dir.open( "user://packets/" ) == OK:
 		# e encontrar todos os pacotes disponiveis no diretorio
 		dir.list_dir_begin()
 		var fileName = dir.get_next()

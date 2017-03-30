@@ -6,7 +6,7 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 2
+var animSpeed = 1
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
@@ -43,7 +43,6 @@ func _button_fimJogo_pressed(callMode):
 	get_node("janelaFim").show()
 	get_node("b_endGame").hide()
 	get_node("janelaSequencia").hide()
-	get_node("JanelaTeste").hide()
 	saveData(callMode)
 
 func _resultKick():
@@ -53,17 +52,14 @@ func _resultKick():
 	historicPlays += defenseSeq[numKicks-1]+ ","
 	
 	if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: 
-		get_node("JanelaTeste/l_result").set_text("Defendeu")
+		get_node("Label").set_text("Defendeu")
 		numDefenses += 1
 		historicPlays += "True,"
 	else:
-		get_node("JanelaTeste/l_result").set_text("Gol")
+		get_node("Label").set_text("Perdeu")
 		numGols += 1
 		historicPlays += "False,"
 	historicPlays += str(time) + ",-----\n"
-	
-	get_node("JanelaTeste/l_goleiro").set_text(chutes[defenseSeq[numKicks-1]])
-	get_node("JanelaTeste/l_chute").set_text(chutes[kickSeq[numKicks-1]])
 
 func _button_kick_pressed(kick):
 	get_node("b_chutes").hide()
@@ -140,6 +136,7 @@ func _process(delta):
 				_button_fimJogo_pressed("OK")
 			else:
 				lockInput = false
+				get_node("Label").set_text("")
 				get_node("b_chutes").show()
 				time = 0
 		
@@ -176,6 +173,8 @@ func saveData(callMode):
 		var restrictFileName = changeFileName(playerName)
 		fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
 		var file = File.new()
+		var dir = Directory.new()
+		if ! dir.dir_exists ("user://toSend/"): dir.make_dir("user://toSend/")
 		var inteiro = file.open("user://toSend/"+fileName+".csv",File.WRITE)
 		file.store_string(strData)
 		file.close()

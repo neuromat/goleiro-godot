@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://scenes/jogo_goleiro/nivel01.gd" type="Script" id=1]
-[ext_resource path="res://images/background/bg_nivel_01.png" type="Texture" id=2]
+[ext_resource path="res://images/background/bg_lvl_01.png" type="Texture" id=2]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=3]
 [ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=5]
@@ -10,9 +10,8 @@
 [ext_resource path="res://animations/animation_ball/ball.tscn" type="PackedScene" id=8]
 [ext_resource path="res://animations/animation_goalkeper/goalkeper.tscn" type="PackedScene" id=9]
 [ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=10]
-[ext_resource path="res://animations/animation_Kicker/images/J_11.png" type="Texture" id=11]
-[ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=12]
-[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=11]
+[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -416,10 +415,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = -8.0
-margin/top = 1.0
-margin/right = 1272.0
-margin/bottom = 721.0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
@@ -432,11 +431,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 theme/theme = ExtResource( 3 )
-margin/left = 538.0
-margin/top = 10.0
-margin/right = 616.0
-margin/bottom = 40.0
-text = "Nivel 01"
+margin/left = 560.0
+margin/top = 28.0
+margin/right = 638.0
+margin/bottom = 58.0
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -566,236 +564,79 @@ shortcut = null
 textures/normal = ExtResource( 7 )
 params/scale = Vector2( 0.15, 0.15 )
 
-[node name="JanelaTeste" type="Panel" parent="."]
+[node name="ball" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 13.0
-margin/top = 432.0
-margin/right = 246.0
-margin/bottom = 701.0
-
-[node name="title" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 10.0
-margin/top = 27.0
-margin/right = 226.0
-margin/bottom = 57.0
-text = "Escolha onde chutar"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_chute" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 131.0
-margin/top = 88.0
-margin/right = 347.0
-margin/bottom = 118.0
-text = "-----"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_goleiro" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 128.0
-margin/top = 132.0
-margin/right = 344.0
-margin/bottom = 162.0
-text = "-----"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="l_result" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 87.0
-margin/top = 187.0
-margin/right = 303.0
-margin/bottom = 217.0
-text = "-------"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_defesa" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 12.0
-margin/top = 132.0
-margin/right = 94.0
-margin/bottom = 162.0
-text = "Goleiro:"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="texto_chute" type="Label" parent="JanelaTeste"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 12.0
-margin/top = 88.0
-margin/right = 77.0
-margin/bottom = 118.0
-text = "Chute:"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="ball" parent="." instance=ExtResource( 8 )]
 
 [node name="Sprite" parent="ball/Bola"]
 
-transform/pos = Vector2( 4313.44, 2084.33 )
-transform/rot = 1440.0
+transform/pos = Vector2( 3111.01, 679.679 )
+transform/rot = 0.0
+transform/scale = Vector2( 0.571655, 0.571655 )
 
 [node name="goalKeeper" parent="." instance=ExtResource( 9 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 627.186, 499.958 )
 
 [node name="R-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2733.12, 682.827 )
-transform/rot = -151.904
+transform/pos = Vector2( 160.546, -384.208 )
+transform/rot = -17.1002
 
 [node name="R-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2391.53, 718.385 )
-transform/rot = 4.17101
+transform/pos = Vector2( 426.493, -166.893 )
+transform/rot = 11.7497
 
 [node name="R-Hand" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2734.77, 713.445 )
-transform/rot = 0.361442
+transform/pos = Vector2( 766.088, -217.06 )
 transform/scale = Vector2( 0.999998, 0.999998 )
 
 [node name="L-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2752.75, 356.938 )
-transform/rot = -26.2055
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( -165.827, -375.866 )
+transform/rot = 22.3035
 
 [node name="L-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2406.36, 330.959 )
-transform/rot = 165.553
+transform/pos = Vector2( -414.769, -133.611 )
 transform/scale = Vector2( 1, 1 )
 
 [node name="L-Hand" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2722.52, 386.542 )
-transform/rot = 167.175
+transform/pos = Vector2( -735.778, -132.255 )
 transform/scale = Vector2( 0.999999, 0.999999 )
 
 [node name="L-Thigh" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2362.73, 440.437 )
-transform/rot = -80.3543
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( -55.9492, 1.15283 )
 
 [node name="R-Thigh" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 2362.12, 559.938 )
-transform/rot = -90.1774
+transform/pos = Vector2( 63.5498, 2.09375 )
+transform/scale = Vector2( 1, 1 )
 
 [node name="R-Leg" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 1995.04, 662.753 )
-transform/rot = -132.386
+transform/pos = Vector2( 405.765, 170.061 )
+transform/scale = Vector2( 1, 1 )
 
 [node name="L-Leg" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 1978.19, 396.965 )
-transform/rot = -73.4657
+transform/pos = Vector2( -363.037, 236.642 )
 transform/scale = Vector2( 1, 1 )
 
 [node name="L-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 1551.77, 412.377 )
-transform/rot = -50.5563
+transform/pos = Vector2( -480.007, 647.004 )
 transform/scale = Vector2( 1.13398, 1 )
 
 [node name="R-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 1576.02, 427.741 )
-transform/rot = -114.824
-
-[node name="Hip" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( 2364.04, 496.383 )
-
-[node name="L-Arm" parent="goalKeeper/Goleiro/Hip/Torso"]
-
-transform/rot = 68.7094
-
-[node name="L-Forearm" parent="goalKeeper/Goleiro/Hip/Torso/L-Arm"]
-
-transform/rot = -168.241
-
-[node name="R-Arm" parent="goalKeeper/Goleiro/Hip/Torso"]
-
-transform/rot = -56.9891
-
-[node name="R-Forearm" parent="goalKeeper/Goleiro/Hip/Torso/R-Arm"]
-
-transform/rot = 156.075
-
-[node name="L-Thigh" parent="goalKeeper/Goleiro/Hip"]
-
-transform/rot = 9.48538
-
-[node name="L-Leg" parent="goalKeeper/Goleiro/Hip/L-Thigh"]
-
-transform/rot = 6.88863
-
-[node name="L-Foot" parent="goalKeeper/Goleiro/Hip/L-Thigh/L-Leg"]
-
-transform/rot = 22.9094
-
-[node name="R-Thigh" parent="goalKeeper/Goleiro/Hip"]
-
-transform/rot = -0.33774
-
-[node name="R-Leg" parent="goalKeeper/Goleiro/Hip/R-Thigh"]
-
-transform/rot = -42.2087
-
-[node name="R-Foot" parent="goalKeeper/Goleiro/Hip/R-Thigh/R-Leg"]
-
-transform/rot = 17.562
+transform/pos = Vector2( 420.533, 650.255 )
+transform/scale = Vector2( 1.13026, 1 )
 
 [node name="Animação-Goleiro" parent="goalKeeper/Goleiro"]
 
@@ -803,9 +644,7 @@ anims/Errou-Meio = SubResource( 4 )
 
 [node name="Kicker" parent="." instance=ExtResource( 10 )]
 
-[node name="Sprite" parent="Kicker/Cobrador"]
-
-texture = ExtResource( 11 )
+editor/display_folded = true
 
 [node name="trave" type="TextureFrame" parent="."]
 
@@ -817,7 +656,7 @@ margin/left = 259.0
 margin/top = 265.0
 margin/right = 1090.0
 margin/bottom = 609.0
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 expand = true
 stretch_mode = 0
 
@@ -906,7 +745,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="scoreboard" parent="." instance=ExtResource( 13 )]
+[node name="scoreboard" parent="." instance=ExtResource( 12 )]
 
 
 [editable path="ball"]
