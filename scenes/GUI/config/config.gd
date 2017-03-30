@@ -7,7 +7,7 @@ var error = [false,0] # Some error happened, so we need stop program. Second coo
 func _button_avancar_pressed():
 	root.goToScene("res://scenes/GUI/choose_game/choose_game.tscn")
 
-func _button_loadPackage_pressed(pathDir):
+func _button_loadPackage_pressed(pathDir,packName):
 	var strPackage = ""
 	error = [false,0]
 	strPackage = "Carregando o pacote: " + pathDir
@@ -38,6 +38,7 @@ func _button_loadPackage_pressed(pathDir):
 		strPackage += "\nCarregado..."
 		get_node("b_avancar").show()
 	get_node("Log_packets").set_text(strPackage)
+	get_node("/root/globalConfig").setPackName(packName)
 	return OK
 
 func sair():
@@ -99,6 +100,6 @@ func createButton(label,pos_y,fileName):
 	var pos_x = (pai.get_size().x - scale_x*novo.get_size().x)/2
 
 	novo.set_pos(Vector2(pos_x,pos_y))
-	novo.connect("pressed",self,"_button_loadPackage_pressed",[fileName])
+	novo.connect("pressed",self,"_button_loadPackage_pressed",[fileName,label])
 	return novo.get_size().y*scale_y+pos_y
 	

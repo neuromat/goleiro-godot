@@ -3,6 +3,7 @@ extends Node
 var level = []      # Dados de configuração, ordenado por fase, em formato dicionario
 var error = [false,0] # Some error happened, so we need stop program. Second coordinate represents the erro number
 var PlayerName = ""
+var packName = "" #Valor do pacote escolhido
 
 func checkConfigFile():
 	pass
@@ -16,6 +17,12 @@ func get_level():
 func get_seqMode(fase):
 	if level[fase]["readSequ"] == "true" : return "readSequence"
 	else: return "readTree"
+
+func setPackName(name):
+	packName = name
+	
+func get_packName():
+	return packName
 	
 func get_tree(fase):
 	var treeFile = level[fase]
@@ -87,7 +94,7 @@ func loadPacketConfFiles(packetPath):
 	var dict = {}       # apenas um nivel, nao encontrei sintaxe para  var dict = [ {} ]
 	var fases = []      # ordem dos levels, dado que a leitura no diretorio nao garante ordem
 	var tmpLevel = []   # recebe as fases na ordem de leitura, em formato dicionario
-	level = []      # Clean level array
+	level = [] # Clean level array
 		
 	# abrir o diretorio de pacotes selecionado
 	if  dir.open(packetPath) == OK:

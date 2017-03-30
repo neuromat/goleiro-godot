@@ -6,7 +6,7 @@ var timeLock = 0
 var defenseSeq = ""
 var kickSeq 
 var timeHide = 2
-var animSpeed = 1
+var animSpeed = 2
 var numGols = 0
 var numDefenses = 0
 var numKicks = 0
@@ -25,7 +25,7 @@ var tree = {
 	"22":[0,1,0]
 }
 var globalTime = 0
-var lastRecordedTime = 0
+var localTime = 0
 var historicPlays = ""
 var time = 0
 const animGoalKepper = "goalKeeper/Goleiro/Animação-Goleiro"
@@ -59,9 +59,7 @@ func _resultKick():
 		get_node("Label").set_text("Perdeu")
 		numGols += 1
 		historicPlays += "False,"
-	historicPlays += str(globalTime - lastRecordedTime) + ",-----\n"
-	lastRecordedTime = globalTime
-	print(historicPlays)
+	historicPlays += str(time) + ",-----\n"
 
 func _button_kick_pressed(kick):
 	get_node("b_chutes").hide()
@@ -119,7 +117,7 @@ func _ready():
 	#OS.set_window_fullscreen(true)
 	
 func _process(delta):
-	globalTime += delta
+	time += delta
 	timeControlAnim += delta
 	var stringDebug  = "Total de chutes: " +  str(qntChutes) + "\nSequência:\n" + kickSeq + "\nDefesas:\n" + defenseSeq + "\nTree:\n" + str(tree)
 	get_node("janelaSequencia/showSequence").set_text(str(stringDebug))
@@ -137,10 +135,11 @@ func _process(delta):
 				set_process(false)
 				_button_fimJogo_pressed("OK")
 			else:
-				lockInput = false 
-				lastRecordedTime = globalTime
+				lockInput = false
 				get_node("Label").set_text("")
 				get_node("b_chutes").show()
+				time = 0
+		
 
 	if Input.is_action_pressed("ui_down") && !lockInput: _button_kick_pressed("1")
 	if Input.is_action_pressed("ui_left") && !lockInput: _button_kick_pressed("0")
@@ -148,9 +147,9 @@ func _process(delta):
 	if Input.is_action_pressed("ui_quit"): saveData("INTERRUPTED BY USER")
 	
 func saveData(callMode):
-	#var teste = historicPlays.split("\n")
-	#for line in teste:
-	#	print (line)
+	var teste = historicPlays.split("\n")
+	for line in teste:
+		print (line)
 	
 	if savedGame == false:
 		var dateTime = OS.get_datetime()
@@ -172,7 +171,7 @@ func saveData(callMode):
 		strData += "gameMode," + globalConfig.get_seqMode(0) + "\n"
 		strData += "status," + str(callMode) + "\n"
 		strData += "waitedResult,optionChosen,correct,movementTime,decisionTime\n"
-		strData += historicPlays + "TOTAL_TIME: "+ str(globalTime)
+		strData += historicPlays
 		
 		var playerName = globalConfig.get_playerName()
 		var restrictFileName = changeFileName(playerName)
