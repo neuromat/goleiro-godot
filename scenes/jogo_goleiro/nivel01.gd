@@ -24,10 +24,10 @@ var tree = {
 	"12":[1,0,0],
 	"22":[0,1,0]
 }
-
-var time = 0
+var globalTime = 0
+var localTime = 0
 var historicPlays = ""
-
+var time = 0
 const animGoalKepper = "goalKeeper/Goleiro/Animação-Goleiro"
 const animKicker = "Kicker/Cobrador/AnimationPlayer"
 const animBall = "ball/Bola/Sprite/AnimationPlayer"
@@ -147,6 +147,10 @@ func _process(delta):
 	if Input.is_action_pressed("ui_quit"): saveData("INTERRUPTED BY USER")
 	
 func saveData(callMode):
+	var teste = historicPlays.split("\n")
+	for line in teste:
+		print (line)
+	
 	if savedGame == false:
 		var dateTime = OS.get_datetime()
 		var strDateTime = ""
