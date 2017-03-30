@@ -31,7 +31,7 @@ tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "updat
 
 [sub_resource type="Animation" id=2]
 
-length = 1.5
+length = 2.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
