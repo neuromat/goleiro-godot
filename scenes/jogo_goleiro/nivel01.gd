@@ -27,41 +27,30 @@ var tree = {
 var globalTime = 0
 var lastRecordedTime = 0
 var historicPlays = ""
-var time = 0
 const animGoalKepper = "goalKeeper/Goleiro/Animação-Goleiro"
 const animKicker = "Kicker/Cobrador/AnimationPlayer"
 const animBall = "ball/Bola/Sprite/AnimationPlayer"
 
-func _button_voltaMenu_pressed():
-	globalScript.goToScene("res://scenes/GUI/choose_game/choose_game.tscn")
-	
 func _button_nextLvl_pressed():
-	#globalScript.goToScene("res://scenes/jogo_goleiro/nivel02.tscn")
-	pass
-	
+	globalScript.goToScene("res://scenes/jogo_goleiro/nivel02.tscn")
+
 func _button_fimJogo_pressed(callMode):
 	get_node("janelaFim").show()
 	get_node("b_endGame").hide()
-	get_node("janelaSequencia").hide()
+	get_node("janelaFim/scoreBoard").set_text("Jogo do Gooleiro fase 1\n"+str(numDefenses)+"/"+str(numKicks))
 	saveData(callMode)
 
 func _resultKick():
-	var chutes = {"0":"Esquerda", "1":"Centro", "2":"Direita"}
 	numKicks += 1
-	historicPlays += kickSeq[numKicks-1] + ","
-	historicPlays += defenseSeq[numKicks-1]+ ","
-	
+	historicPlays += kickSeq[numKicks-1] + ",?," +defenseSeq[numKicks-1]+ ","
 	if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: 
-		get_node("Label").set_text("Defendeu")
 		numDefenses += 1
 		historicPlays += "True,"
 	else:
-		get_node("Label").set_text("Perdeu")
 		numGols += 1
 		historicPlays += "False,"
-	historicPlays += str(globalTime - lastRecordedTime) + ",-----\n"
+	historicPlays += str(globalTime - lastRecordedTime) + "\n"
 	lastRecordedTime = globalTime
-	print(historicPlays)
 
 func _button_kick_pressed(kick):
 	get_node("b_chutes").hide()
@@ -80,8 +69,11 @@ func animFlow():
 			else:
 				get_node(animGoalKepper).play(goal[defenseSeq[numKicks-1]])
 				get_node(animBall).play(goal[kickSeq[numKicks-1]])
-
-	if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing(): return false
+	if get_node(animGoalKepper).is_playing() && get_node(animKicker).get_current_animation_pos() >= 0.75:
+		if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: get_node("phrase/AnimationPlayer").play("defendeu")
+		else: get_node("phrase/AnimationPlayer").play("perdeu")
+		
+	if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing() && !get_node("phrase/AnimationPlayer").is_playing(): return false
 	else: return true
 	
 func _updatePlacar():
@@ -106,13 +98,13 @@ func _ready():
 	kickSeq = globalScript.genSeq(qntChutes,tree)
 
 	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
-	get_node("janelaFim/b_voltaMenu").connect("pressed",self,"_button_voltaMenu_pressed")
 	get_node("janelaFim/b_nextLvl").connect("pressed",self,"_button_nextLvl_pressed")
 	get_node("janelaFim/b_sairGame").connect("pressed",self,"_quit")
 	get_node("b_chutes/b_baixo").connect("pressed",self,"_button_kick_pressed",["1"])
 	get_node("b_chutes/b_esquerda").connect("pressed",self,"_button_kick_pressed",["0"])
 	get_node("b_chutes/b_direita").connect("pressed",self,"_button_kick_pressed",["2"])
 	get_node("janelaFim").hide()
+	get_node("janelaFim/nome").set_text(globalConfig.get_playerName().to_upper())
 	get_node(animGoalKepper).set_speed(animSpeed)
 	get_node(animKicker).set_speed(animSpeed)
 	get_node(animBall).set_speed(animSpeed)
@@ -121,8 +113,6 @@ func _ready():
 func _process(delta):
 	globalTime += delta
 	timeControlAnim += delta
-	var stringDebug  = "Total de chutes: " +  str(qntChutes) + "\nSequência:\n" + kickSeq + "\nDefesas:\n" + defenseSeq + "\nTree:\n" + str(tree)
-	get_node("janelaSequencia/showSequence").set_text(str(stringDebug))
 
 	# a variável lockInput é para travar as setas de chute
 	if lockInput == true:
@@ -139,7 +129,6 @@ func _process(delta):
 			else:
 				lockInput = false 
 				lastRecordedTime = globalTime
-				get_node("Label").set_text("")
 				get_node("b_chutes").show()
 
 	if Input.is_action_pressed("ui_down") && !lockInput: _button_kick_pressed("1")
@@ -148,32 +137,29 @@ func _process(delta):
 	if Input.is_action_pressed("ui_quit"): saveData("INTERRUPTED BY USER")
 	
 func saveData(callMode):
-	#var teste = historicPlays.split("\n")
-	#for line in teste:
-	#	print (line)
-	
 	if savedGame == false:
 		var dateTime = OS.get_datetime()
 		var strDateTime = ""
 		var fileName = ""
 		randomize()
 		var randomFlag = str(round(rand_range(0,999)))
-		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+"_"
-		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)
+		var strData = "experimentGroup,game,playID,phase,gameTime,relaxTime,playerMachine,YYMMDD,HHMMSS,random,playerAlias,playLimit,totalCorrect,successRate,gameMode,status,move,waitedResult,ehRandom,optionChosen,correct,movementTime\n"
+		var strCommonData = ""
+		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+","
+		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)+","+randomFlag
 		
-		var strData = "game,_JG_\n"
-		strData += "playId," + globalConfig.get_id(0) + "\n"
-		strData += "playerAlias," + globalConfig.get_playerName() + ",HP-HP_"+strDateTime+"_" + randomFlag + "\n"
-		strData += "totalPlays,"+ str(numKicks) + "\n"
-		strData += "totalCorrect,"+ str(numDefenses) + "\n"
-		if numKicks == 0 : strData += "successRate,*** >-------<\n"
-		else: strData += "successRate,*** >"+str(numDefenses/numKicks)+"<\n"
-		strData += "minHits, ?????\n"
-		strData += "gameMode," + globalConfig.get_seqMode(0) + "\n"
-		strData += "status," + str(callMode) + "\n"
-		strData += "waitedResult,optionChosen,correct,movementTime,decisionTime\n"
-		strData += historicPlays + "TOTAL_TIME: "+ str(globalTime)
 		
+		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(0)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
+		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)
+		if numKicks == 0 : strCommonData += ",0.0,"
+		else: strCommonData += ","+str(numDefenses/numKicks)+","
+		strCommonData +=globalConfig.get_seqMode(0)+","+str(callMode)+","
+		
+		var historicPlaysArray = historicPlays.split("\n")
+		for line in range(0,historicPlaysArray.size()-1):
+			strData += strCommonData + str(line+1) +","+ historicPlaysArray[line]+"\n"
+
+		# Creating file and write data
 		var playerName = globalConfig.get_playerName()
 		var restrictFileName = changeFileName(playerName)
 		fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag

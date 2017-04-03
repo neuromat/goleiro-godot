@@ -7,7 +7,7 @@
 [ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -20,28 +20,28 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 font/size = 30
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=3]
 
 font/size = 28
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 
 font/size = 18
 font/use_mipmaps = true
@@ -79,8 +79,8 @@ margin/left = 150.0
 margin/top = 189.5
 margin/right = -150.0
 margin/bottom = 168.0
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/selection_color = Color( 0.78125, 0.78125, 0.78125, 1 )
 custom_colors/cursor_color = Color( 0.0466919, 0.664062, 0.0708079, 1 )
 custom_colors/font_color_selected = Color( 0.274353, 0.484375, 0.435151, 1 )
@@ -119,7 +119,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 430.0
 margin/bottom = 78.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "Jogo do Goleiro"
 align = 1
 valign = 1
@@ -155,7 +155,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 220.0
 margin/bottom = 85.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Sair (ou ESC)"
 align = 1
 valign = 1
@@ -192,7 +192,7 @@ margin/left = 57.0
 margin/top = 26.0
 margin/right = 163.0
 margin/bottom = 56.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "Continuar"
 percent_visible = 1.0
 lines_skipped = 0
@@ -208,7 +208,7 @@ margin/left = 35.0
 margin/top = 9.0
 margin/right = 468.0
 margin/bottom = 87.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "O jogo do goleiro"
 align = 1
 valign = 1
@@ -226,7 +226,7 @@ margin/left = 48.0
 margin/top = 88.0
 margin/right = 461.0
 margin/bottom = 508.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "Você é um goleiro na hora do pênalti e deve decidir para onde pular (esquerda, direita ou centro) antes da bola sair. Atenção: cada batedor tem um estratégia própria  para escolher onde vai chutar. Mas cuidado, ele pode tentar te enganar!"
 align = 3
 autowrap = true

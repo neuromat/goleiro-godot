@@ -2,30 +2,18 @@
 
 [ext_resource path="res://scenes/jogo_goleiro/nivel01.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_lvl_01.png" type="Texture" id=2]
-[ext_resource path="res://themes/listButtons.tres" type="Theme" id=3]
-[ext_resource path="res://fonts/FACEBOLF.OTF" type="DynamicFontData" id=4]
-[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://images/Interface/seta_01.png" type="Texture" id=6]
-[ext_resource path="res://images/Interface/seta_02.png" type="Texture" id=7]
-[ext_resource path="res://animations/animation_ball/ball.tscn" type="PackedScene" id=8]
-[ext_resource path="res://animations/animation_goalkeper/goalkeper.tscn" type="PackedScene" id=9]
-[ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=10]
-[ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=11]
-[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=12]
-
-[sub_resource type="DynamicFont" id=1]
-
-font/size = 18
-font/use_mipmaps = true
-font/use_filter = true
-font/font = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=2]
-
-font/size = 18
-font/use_mipmaps = true
-font/use_filter = true
-font/font = ExtResource( 5 )
+[ext_resource path="res://images/Interface/exit.png" type="Texture" id=3]
+[ext_resource path="res://images/Interface/seta_01.png" type="Texture" id=4]
+[ext_resource path="res://images/Interface/seta_02.png" type="Texture" id=5]
+[ext_resource path="res://animations/animation_ball/ball.tscn" type="PackedScene" id=6]
+[ext_resource path="res://animations/animation_goalkeper/goalkeper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=9]
+[ext_resource path="res://animations/animation_phrase/animation_phrase.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=12]
+[ext_resource path="res://images/Interface/button.png" type="Texture" id=13]
+[ext_resource path="res://themes/listButtons.tres" type="Theme" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -351,59 +339,53 @@ tracks/61/interp = 1
 tracks/61/imported = false
 tracks/61/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.356796, 0.356818 ] }
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=17]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
+bg_color = Color( 0.212677, 0.145996, 0.359375, 1 )
 light_color = Color( 0.8, 0.8, 0.8, 1 )
 dark_color = Color( 0.8, 0.8, 0.8, 1 )
 border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=12]
 
-font/size = 18
+font/size = 45
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 4 )
+font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=13]
 
-font/size = 18
+font/size = 45
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 4 )
+font/font = ExtResource( 12 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="DynamicFont" id=14]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
-bg_color = Color( 0.6, 0.6, 0.6, 1 )
-light_color = Color( 0.8, 0.8, 0.8, 1 )
-dark_color = Color( 0.8, 0.8, 0.8, 1 )
-border_size = 0
-border_blend = true
-draw_bg = true
-
-[sub_resource type="DynamicFont" id=9]
-
-font/size = 18
+font/size = 30
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 4 )
+font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=15]
 
-font/size = 18
+font/size = 40
 font/use_mipmaps = true
 font/use_filter = true
-font/font = ExtResource( 4 )
+font/font = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=16]
+
+font/size = 55
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 12 )
 
 [node name="raiz_jogoGoleiro_nl1" type="Node2D"]
 
@@ -423,84 +405,22 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="."]
+[node name="b_endGame" type="TextureButton" parent="."]
 
-rect/scale = Vector2( 2, 2 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-theme/theme = ExtResource( 3 )
-margin/left = 560.0
-margin/top = 28.0
-margin/right = 638.0
-margin/bottom = 58.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="b_endGame" type="Button" parent="."]
-
+visibility/opacity = 0.6
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 1132.0
-margin/top = 657.0
-margin/right = 1270.0
-margin/bottom = 707.0
-custom_fonts/font = SubResource( 1 )
+margin/left = 1179.0
+margin/top = 30.0
+margin/right = 1262.25
+margin/bottom = 113.25
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Encerrar jogo"
-flat = false
-
-[node name="janelaSequencia" type="Panel" parent="."]
-
-editor/display_folded = true
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 417.0
-margin/top = 8.0
-margin/right = 1044.0
-margin/bottom = 248.0
-
-[node name="texto" type="Label" parent="janelaSequencia"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 9.0
-margin/top = 11.0
-margin/right = 68.0
-margin/bottom = 41.0
-custom_fonts/font = SubResource( 2 )
-text = "Debug"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="showSequence" type="TextEdit" parent="janelaSequencia"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 15.0
-margin/top = 42.0
-margin/right = 602.0
-margin/bottom = 215.0
-syntax_highlighting = false
-show_line_numbers = false
-highlight_all_occurrences = false
-caret/block_caret = false
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
+textures/normal = ExtResource( 3 )
+params/scale = Vector2( 0.25, 0.25 )
 
 [node name="b_chutes" type="Panel" parent="."]
 
@@ -528,7 +448,7 @@ margin/bottom = 125.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 4 )
 params/scale = Vector2( 0.15, 0.15 )
 
 [node name="b_baixo" type="TextureButton" parent="b_chutes"]
@@ -545,7 +465,7 @@ margin/bottom = 219.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 6 )
+textures/normal = ExtResource( 4 )
 params/scale = Vector2( 0.15, 0.15 )
 
 [node name="b_direita" type="TextureButton" parent="b_chutes"]
@@ -561,10 +481,10 @@ margin/bottom = 126.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 7 )
+textures/normal = ExtResource( 5 )
 params/scale = Vector2( 0.15, 0.15 )
 
-[node name="ball" parent="." instance=ExtResource( 8 )]
+[node name="ball" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
 
@@ -574,39 +494,41 @@ transform/pos = Vector2( 3111.01, 679.679 )
 transform/rot = 0.0
 transform/scale = Vector2( 0.571655, 0.571655 )
 
-[node name="goalKeeper" parent="." instance=ExtResource( 9 )]
+[node name="goalKeeper" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 627.186, 499.958 )
 
 [node name="R-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 160.546, -384.208 )
-transform/rot = -17.1002
+transform/pos = Vector2( 132.796, -397.222 )
+transform/scale = Vector2( 1, 1 )
 
 [node name="R-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 426.493, -166.893 )
-transform/rot = 11.7497
+transform/pos = Vector2( 359.19, -138.959 )
+transform/scale = Vector2( 1, 1 )
 
 [node name="R-Hand" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 766.088, -217.06 )
+transform/pos = Vector2( 499.008, -452.471 )
+transform/rot = 65.5008
 transform/scale = Vector2( 0.999998, 0.999998 )
 
 [node name="L-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -165.827, -375.866 )
-transform/rot = 22.3035
+transform/pos = Vector2( -191.614, -360.525 )
+transform/rot = 35.6975
 
 [node name="L-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -414.769, -133.611 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( -377.667, -67.1931 )
+transform/rot = -56.3999
 
 [node name="L-Hand" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -735.778, -132.255 )
+transform/pos = Vector2( -575.639, -319.893 )
+transform/rot = -54.7781
 transform/scale = Vector2( 0.999999, 0.999999 )
 
 [node name="L-Thigh" parent="goalKeeper/Goleiro"]
@@ -620,29 +542,27 @@ transform/scale = Vector2( 1, 1 )
 
 [node name="R-Leg" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 405.765, 170.061 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 430.477, 105.479 )
 
 [node name="L-Leg" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -363.037, 236.642 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( -409.653, 158.161 )
 
 [node name="L-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -480.007, 647.004 )
+transform/pos = Vector2( -526.625, 568.521 )
 transform/scale = Vector2( 1.13398, 1 )
 
 [node name="R-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 420.533, 650.255 )
+transform/pos = Vector2( 567.453, 565.962 )
 transform/scale = Vector2( 1.13026, 1 )
 
 [node name="Animação-Goleiro" parent="goalKeeper/Goleiro"]
 
 anims/Errou-Meio = SubResource( 4 )
 
-[node name="Kicker" parent="." instance=ExtResource( 10 )]
+[node name="Kicker" parent="." instance=ExtResource( 8 )]
 
 editor/display_folded = true
 
@@ -656,78 +576,45 @@ margin/left = 259.0
 margin/top = 265.0
 margin/right = 1090.0
 margin/bottom = 609.0
-texture = ExtResource( 11 )
+texture = ExtResource( 9 )
 expand = true
 stretch_mode = 0
 
-[node name="janelaFim" type="Panel" parent="."]
+[node name="phrase" parent="." instance=ExtResource( 10 )]
+
+editor/display_folded = true
+margin/left = 373.0
+margin/top = 135.0
+margin/right = 989.0
+margin/bottom = 332.0
+
+[node name="scoreboard" parent="." instance=ExtResource( 11 )]
+
+[node name="janelaFim" type="Control" parent="."]
 
 editor/display_folded = true
 visibility/visible = false
-visibility/opacity = 0.7
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 379.0
-margin/top = 216.0
-margin/right = 880.0
-margin/bottom = 436.0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
 
-[node name="b_voltaMenu" type="Button" parent="janelaFim"]
+[node name="Panel" type="Panel" parent="janelaFim"]
 
+visibility/opacity = 0.9
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 5.0
-margin/top = 160.0
-margin/right = 250.0
-margin/bottom = 210.0
-custom_styles/hover = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Voltar menu"
-flat = false
-
-[node name="b_sairGame" type="Button" parent="janelaFim"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 75.0
-margin/top = 93.0
-margin/right = 423.0
-margin/bottom = 143.0
-custom_styles/hover = SubResource( 5 )
-custom_fonts/font = SubResource( 7 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Sair do Jogo (ESC)"
-flat = false
-
-[node name="b_nextLvl" type="Button" parent="janelaFim"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 250.0
-margin/top = 160.0
-margin/right = 495.0
-margin/bottom = 210.0
-custom_styles/hover = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
-disabled = true
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Próximo nível"
-flat = false
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
+custom_styles/panel = SubResource( 17 )
 
 [node name="texto" type="Label" parent="janelaFim"]
 
@@ -735,19 +622,124 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 170.0
-margin/top = 40.0
-margin/right = 343.0
-margin/bottom = 59.0
-custom_fonts/font = SubResource( 10 )
-text = "Fim do jogo... bla bla"
+margin/left = 285.0
+margin/top = 251.0
+margin/right = 1079.0
+margin/bottom = 312.0
+custom_fonts/font = SubResource( 12 )
+text = "Parabéns, você atingiu o próximo nível!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="scoreboard" parent="." instance=ExtResource( 12 )]
+[node name="nome" type="Label" parent="janelaFim"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 285.0
+margin/top = 174.0
+margin/right = 409.0
+margin/bottom = 235.0
+custom_fonts/font = SubResource( 13 )
+text = "NOME"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="scoreBoard" type="Label" parent="janelaFim"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 79.0
+margin/top = 619.0
+margin/right = 377.0
+margin/bottom = 704.0
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0.0762939, 0, 0.390625, 1 )
+text = "Jogo do Goleiro Fase 1\n0/0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_sairGame" type="TextureButton" parent="janelaFim"]
+
+process/pause_mode = 1
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 136.0
+margin/top = 375.0
+margin/right = 572.0
+margin/bottom = 537.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+params/scale = Vector2( 1, 0.75 )
+
+[node name="Label" type="Label" parent="janelaFim/b_sairGame"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 162.0
+custom_fonts/font = SubResource( 15 )
+text = "Sair\n(ou ESC)"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_nextLvl" type="TextureButton" parent="janelaFim"]
+
+process/pause_mode = 1
+editor/display_folded = true
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 14 )
+margin/left = 708.0
+margin/top = 375.0
+margin/right = 1144.0
+margin/bottom = 537.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 13 )
+params/scale = Vector2( 1, 0.75 )
+
+[node name="Label" type="Label" parent="janelaFim/b_nextLvl"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 162.0
+custom_fonts/font = SubResource( 16 )
+text = "Avançar"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
 [editable path="ball"]
 [editable path="goalKeeper"]
 [editable path="Kicker"]
+[editable path="phrase"]

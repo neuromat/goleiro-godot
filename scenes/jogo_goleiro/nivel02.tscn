@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scenes/jogo_goleiro/nivel02.gd" type="Script" id=1]
 [ext_resource path="res://scenes/jogo_goleiro/imagens/nivel_02.png" type="Texture" id=2]
-[ext_resource path="res://fonts/GFSNeohellenic.fnt" type="BitmapFont" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
 
@@ -51,7 +50,6 @@ margin/left = 260.0
 margin/top = 72.0
 margin/right = 421.0
 margin/bottom = 121.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.800781, 0.118866, 0.118866, 1 )
 custom_colors/font_color_shadow = Color( 0.261719, 0.115524, 0.115524, 1 )
 text = "Nivel 02"
@@ -69,7 +67,6 @@ margin/left = 272.0
 margin/top = 396.0
 margin/right = 522.0
 margin/bottom = 446.0
-custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -99,7 +96,6 @@ margin/top = 160.0
 margin/right = 250.0
 margin/bottom = 210.0
 custom_styles/hover = SubResource( 1 )
-custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -117,7 +113,6 @@ margin/top = 93.0
 margin/right = 423.0
 margin/bottom = 143.0
 custom_styles/hover = SubResource( 1 )
-custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -135,7 +130,6 @@ margin/top = 160.0
 margin/right = 495.0
 margin/bottom = 210.0
 custom_styles/hover = SubResource( 2 )
-custom_fonts/font = ExtResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -152,7 +146,6 @@ margin/left = 65.0
 margin/top = 17.0
 margin/right = 535.0
 margin/bottom = 61.0
-custom_fonts/font = ExtResource( 3 )
 text = "Fim do jogo... bla bla"
 percent_visible = 1.0
 lines_skipped = 0
