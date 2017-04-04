@@ -1,5 +1,5 @@
 extends Node2D
-var fase = 0
+var fase = 2
 var globalScript
 var qntChutes = 0
 var lockInput = false
@@ -90,6 +90,7 @@ func _ready():
 	kickSeq = globalConfig.get_sequ(fase)
 	sequR = globalConfig.get_sequR(fase)
 	qntChutes =  globalConfig.get_qntChutes(fase)
+	#kickSeq = globalScript.genSeq(qntChutes,tree)
 
 	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
 	get_node("janelaFim/b_nextLvl").connect("pressed",self,"_button_nextLvl_pressed")

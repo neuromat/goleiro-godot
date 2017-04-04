@@ -7,6 +7,7 @@ var packName = "" #Valor do pacote escolhido
 var sequR = ["","","","","","",""] #sequência que define se a jogada corrente é ou não aleatória
 var seqKick = ["","","","","","",""] #sequência de chutes
 
+
 func checkConfigFile():
 	pass
 
@@ -162,9 +163,9 @@ func loadPacketConfFiles(packetPath):
 				if dict.parse_json(text) == OK:
 					fases.append(int(dict["level"]));
 					tmpLevel.append(dict)
+				else: print(text)
 				file.close()
 			fileName = dir.get_next()
-
 	# os levels indicados nos arquivos de configuracao devem ser sequenciais
 	# nao obrigatoriamente iniciando em zero
 	var tmpFases = [] + fases
@@ -192,6 +193,4 @@ func loadPacketConfFiles(packetPath):
 			while fases[j] != i: 
 				j = j + 1
 			level.append(tmpLevel[j])
-			
-		
 	return OK
