@@ -86,10 +86,10 @@ func _ready():
 	globalConfig.loadPacketConfFiles("user://packets/default")
 	
 	#Gerando a sequência de chutes e de aleatoriedade
-	kickSeq = globalConfig.get_sequ(1)
-	sequR = globalConfig.get_sequR(1)
+	kickSeq = globalConfig.get_sequ(0)
+	sequR = globalConfig.get_sequR(0)
 	#tree = globalConfig.get_tree(0)
-	qntChutes =  globalConfig.get_qntChutes(1)
+	qntChutes =  globalConfig.get_qntChutes(0)
 	#kickSeq = globalScript.genSeq(qntChutes,tree)
 
 	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
@@ -146,9 +146,9 @@ func saveData(callMode):
 		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+","
 		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)+","+randomFlag
 		
-		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(1)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
+		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(0)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
 		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)+","+str(rate)+","
-		strCommonData +=globalConfig.get_seqMode(1)+","+str(callMode)+","
+		strCommonData +=globalConfig.get_seqMode(0)+","+str(callMode)+","
 		
 		var historicPlaysArray = historicPlays.split("\n")
 		for line in range(0,historicPlaysArray.size()-1):
@@ -157,7 +157,7 @@ func saveData(callMode):
 		# Creating file and write data
 		var playerName = globalConfig.get_playerName()
 		var restrictFileName = changeFileName(playerName)
-		fileName += "Plays_JG_" +  globalConfig.get_id(1)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
+		fileName += "Plays_JG_" +  globalConfig.get_id(0)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
 		var file = File.new()
 		var dir = Directory.new()
 		if ! dir.dir_exists ("user://toSend/"): dir.make_dir("user://toSend/")
