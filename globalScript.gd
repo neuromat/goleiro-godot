@@ -22,7 +22,13 @@ func _process(delta):
 
 func genSeq(size, tree):
 	randomize()
-	var st = Tree.new(tree)
+	var newTreeAcc = {}
+
+	# No godot não existe uma função para fazer uma cópia
+	# do dicionário "tree", então a gambiarra foi:
+	# Passa para json e volta para dictionary
+	newTreeAcc.parse_json(tree.to_json())
+	var st = Tree.new(newTreeAcc)
 	st.disparo()
 
 	for i in range(st.estado.length(),size):

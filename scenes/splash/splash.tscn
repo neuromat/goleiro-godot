@@ -17,14 +17,14 @@ font/font = ExtResource( 7 )
 
 [sub_resource type="Animation" id=2]
 
-length = 3.0
+length = 2.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Label:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/0/keys = { "times":FloatArray( 0, 1, 2 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 1.0, 0.0 ] }
 
 [node name="background" type="TextureFrame"]
 
@@ -43,6 +43,7 @@ script/script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 
+visibility/opacity = 0.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2

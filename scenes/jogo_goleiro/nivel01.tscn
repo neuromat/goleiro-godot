@@ -15,14 +15,14 @@
 [ext_resource path="res://images/Interface/button.png" type="Texture" id=13]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=14]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=1]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource/name = "Errou-Meio"
 length = 1.0
@@ -339,7 +339,7 @@ tracks/61/interp = 1
 tracks/61/imported = false
 tracks/61/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.356796, 0.356818 ] }
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=3]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -352,35 +352,35 @@ border_size = 0
 border_blend = true
 draw_bg = true
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 45
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=5]
 
 font/size = 45
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=6]
 
 font/size = 30
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=7]
 
 font/size = 40
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=8]
 
 font/size = 55
 font/use_mipmaps = true
@@ -433,7 +433,7 @@ margin/left = 66.0
 margin/top = 595.0
 margin/right = 337.0
 margin/bottom = 696.0
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="b_esquerda" type="TextureButton" parent="b_chutes"]
 
@@ -560,7 +560,7 @@ transform/scale = Vector2( 1.13026, 1 )
 
 [node name="Animação-Goleiro" parent="goalKeeper/Goleiro"]
 
-anims/Errou-Meio = SubResource( 4 )
+anims/Errou-Meio = SubResource( 2 )
 
 [node name="Kicker" parent="." instance=ExtResource( 8 )]
 
@@ -614,7 +614,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1280.0
 margin/bottom = 720.0
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="texto" type="Label" parent="janelaFim"]
 
@@ -626,7 +626,7 @@ margin/left = 285.0
 margin/top = 251.0
 margin/right = 1079.0
 margin/bottom = 312.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 4 )
 text = "Parabéns, você atingiu o próximo nível!"
 percent_visible = 1.0
 lines_skipped = 0
@@ -642,7 +642,7 @@ margin/left = 285.0
 margin/top = 174.0
 margin/right = 409.0
 margin/bottom = 235.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 5 )
 text = "NOME"
 percent_visible = 1.0
 lines_skipped = 0
@@ -658,7 +658,7 @@ margin/left = 79.0
 margin/top = 619.0
 margin/right = 377.0
 margin/bottom = 704.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.0762939, 0, 0.390625, 1 )
 text = "Jogo do Goleiro Fase 1\n0/0"
 percent_visible = 1.0
@@ -693,7 +693,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 436.0
 margin/bottom = 162.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 7 )
 text = "Sair\n(ou ESC)"
 align = 1
 valign = 1
@@ -730,13 +730,17 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 436.0
 margin/bottom = 162.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 8 )
 text = "Avançar"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[connection signal="animation_started" from="phrase/AnimationPlayer" to="phrase" method="_on_AnimationPlayer_animation_started"]
+
+[connection signal="finished" from="phrase/AnimationPlayer" to="phrase" method="_on_AnimationPlayer_finished"]
 
 
 [editable path="ball"]

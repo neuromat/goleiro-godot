@@ -1,0 +1,33 @@
+{"id":"grupo1-v2",
+ "level":"1",
+ "limitPlays":"40",
+ "choices":"3",
+ "depth":"2",
+ "limitValue": "80",
+ "readSequ":"false",
+ "sequ": "2210221200102210221200102212001022102210",
+ "sequR":"nnnYnnnYnnnYnnnYnnnYnnnYnnnYnnnYnnnYnnnY",
+ "states":[
+    { "path": "00", "probEvent0":  "0", "probEvent1": "1"},
+    { "path": "10", "probEvent0":  "0", "probEvent1": "0"},
+    { "path": "20", "probEvent0":  "1", "probEvent1": "0"},
+    { "path":  "1", "probEvent0": ".7", "probEvent1": "0"},
+    { "path": "02", "probEvent0":  "0", "probEvent1": "0"},
+    { "path": "12", "probEvent0":  "1", "probEvent1": "0"},
+    { "path": "22", "probEvent0":  "0", "probEvent1": "1"}
+    ],
+ "tree":[
+		{"00": [0,1,0]},
+		{"10": [0,0,1]},
+		{"20": [1,0,0]},
+		{"1":  [0.7,0,0.3]},
+		{"02": [0,0,1]},
+		{"12": [1,0,0]},
+		{"22": [0,1,0]},
+	],
+
+ "animationTypeJG":"short",
+ "animationTypeOthers":"short",
+ "scoreboard":"true",
+ "playsToRelax":"0"
+}

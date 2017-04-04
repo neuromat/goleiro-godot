@@ -4,6 +4,8 @@ var level = []      # Dados de configuração, ordenado por fase, em formato dic
 var error = [false,0] # Some error happened, so we need stop program. Second coordinate represents the erro number
 var PlayerName = ""
 var packName = "" #Valor do pacote escolhido
+var sequR = ["","","","","","",""] #sequência que define se a jogada corrente é ou não aleatória
+var seqKick = ["","","","","","",""] #sequência de chutes
 
 func checkConfigFile():
 	pass
@@ -13,7 +15,50 @@ func set_playerName(name):
 	
 func get_level():
 	return level
+
+func get_sequR(fase):
+	return sequR[fase]
+
+func get_sequ(fase):
+	var seqPack = level[fase]["sequ"]
+	var seqRPack = level[fase]["sequR"]
+	if seqKick[fase] == "" || sequR[fase] == "":
+		#	É necessário gerar a sequência de chutes e
+		#	a sequência que informa a aleatoriedade ou
+		#	não do chute
+		if level[fase]["readSequ"] == "true" :
+			#	Gerando sequência a partir da sequência
+			#	dada no arquivo de configuração
+			for i in range(0,get_qntChutes(fase)):
+				seqKick[fase] += seqPack[i % seqPack.length()]
+				sequR[fase] += seqRPack[i % seqRPack.length()]
+		else:
+			seqKick[fase] = get_node("/root/globalScript").genSeq(get_qntChutes(fase), get_tree(fase))
+			sequR[fase] = gen_sequR(fase,seqKick[fase])
+		return seqKick[fase]
+
+func gen_sequR(fase,sequence):
+	var tree = get_tree(fase)
+	var sequR = ""
+	var key = ""
+	for i in range(0,sequence.length()):
+		key = sequence.left(i)
+		for j in range(0,key.length()):
+			if tree.has(key.right(j)):
+				if tree[key.right(j)].has(1.0):sequR += "n"
+				else: sequR += "y"
+				break
+
+	# O sufixo inicial é sorteado dentro os possíveis,
+	# então colocaremos como aleatório, mas talvez fosse
+	# razoável marcar diferente
+	var sufix = ""
+	for i in range(0,sequence.length()-sequR.length()): 
+		sufix += "-"
+	sequR = sufix + sequR
+	return sequR.to_upper()
 	
+
 func get_seqMode(fase):
 	if level[fase]["readSequ"] == "true" : return "readSequence"
 	else: return "readTree"

@@ -12,6 +12,7 @@ var numDefenses = 0
 var numKicks = 0
 var anim = {}
 var timeControlAnim =0
+var sequR = "" # Sequência que informa se o chute foi de uma escolha aleatória ou não
 var savedGame = false
 var defense = {"0":"Defendeu-Esquerda", "1":"Defendeu-Meio", "2":"Defendeu-Direita"}
 var goal = {"0":"Errou-Esquerda", "1":"Errou-Meio", "2":"Errou-Direita"}
@@ -42,7 +43,7 @@ func _button_fimJogo_pressed(callMode):
 
 func _resultKick():
 	numKicks += 1
-	historicPlays += kickSeq[numKicks-1] + ",?," +defenseSeq[numKicks-1]+ ","
+	historicPlays += kickSeq[numKicks-1] + ","+sequR[numKicks-1]+"," +defenseSeq[numKicks-1]+ ","
 	if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: 
 		numDefenses += 1
 		historicPlays += "True,"
@@ -91,11 +92,14 @@ func _ready():
 	globalServer = get_node("/root/globalServer")
 
 	# Temporário só para fazer os testes...
-	globalConfig.loadPacketConfFiles("user://packets/Pacote1")
-
-	tree = globalConfig.get_tree(0)
+	globalConfig.loadPacketConfFiles("user://packets/default")
+	
+	#Gerando a sequência de chutes e de aleatoriedade
+	kickSeq = globalConfig.get_sequ(0)
+	sequR = globalConfig.get_sequR(0)
+	#tree = globalConfig.get_tree(0)
 	qntChutes =  globalConfig.get_qntChutes(0)
-	kickSeq = globalScript.genSeq(qntChutes,tree)
+	#kickSeq = globalScript.genSeq(qntChutes,tree)
 
 	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
 	get_node("janelaFim/b_nextLvl").connect("pressed",self,"_button_nextLvl_pressed")
@@ -141,18 +145,18 @@ func saveData(callMode):
 		var dateTime = OS.get_datetime()
 		var strDateTime = ""
 		var fileName = ""
-		randomize()
-		var randomFlag = str(round(rand_range(0,999)))
+		var rate = 0.0
+		var randomFlag = ""
 		var strData = "experimentGroup,game,playID,phase,gameTime,relaxTime,playerMachine,YYMMDD,HHMMSS,random,playerAlias,playLimit,totalCorrect,successRate,gameMode,status,move,waitedResult,ehRandom,optionChosen,correct,movementTime\n"
 		var strCommonData = ""
+		if numKicks != 0 : rate = float(numDefenses)/float(numKicks)
+		randomize()
+		randomFlag = str(round(rand_range(0,999)))
 		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+","
 		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)+","+randomFlag
 		
-		
 		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(0)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
-		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)
-		if numKicks == 0 : strCommonData += ",0.0,"
-		else: strCommonData += ","+str(numDefenses/numKicks)+","
+		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)+","+str(rate)+","
 		strCommonData +=globalConfig.get_seqMode(0)+","+str(callMode)+","
 		
 		var historicPlaysArray = historicPlays.split("\n")
