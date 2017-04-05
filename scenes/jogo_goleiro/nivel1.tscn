@@ -1,16 +1,16 @@
 [gd_scene load_steps=23 format=1]
 
-[ext_resource path="res://scenes/jogo_goleiro/nivel03.gd" type="Script" id=1]
-[ext_resource path="res://images/background/bg_lvl_03.png" type="Texture" id=2]
+[ext_resource path="res://scenes/jogo_goleiro/jogo_goleiro.gd" type="Script" id=1]
+[ext_resource path="res://images/background/bg_lvl_01.png" type="Texture" id=2]
 [ext_resource path="res://images/Interface/exit.png" type="Texture" id=3]
 [ext_resource path="res://images/Interface/seta_01.png" type="Texture" id=4]
 [ext_resource path="res://images/Interface/seta_02.png" type="Texture" id=5]
 [ext_resource path="res://animations/animation_ball/ball.tscn" type="PackedScene" id=6]
-[ext_resource path="res://animations/animation_goalkeper_lvl03/goalkeper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://animations/animation_goalkeper_lvl01/goalkeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=8]
 [ext_resource path="res://images/goal_post_lvl01.png" type="Texture" id=9]
 [ext_resource path="res://animations/animation_phrase/animation_phrase.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/scoreboard/scoreboard_lvl3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/scoreboard/scoreboard_lvl1.tscn" type="PackedScene" id=11]
 [ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://images/Interface/button.png" type="Texture" id=13]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=14]
@@ -390,6 +390,7 @@ font/font = ExtResource( 12 )
 [node name="raiz_jogoGoleiro_nl1" type="Node2D"]
 
 script/script = ExtResource( 1 )
+fase = 0
 
 [node name="background" type="TextureFrame" parent="."]
 
@@ -704,7 +705,6 @@ max_lines_visible = -1
 
 process/pause_mode = 1
 editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2

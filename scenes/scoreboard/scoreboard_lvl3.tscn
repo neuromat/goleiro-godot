@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://scenes/scoreboard/images/tabela-Profissional.png" type="Texture" id=1]
-[ext_resource path="res://scenes/scoreboard/scoreboard_lvl3.gd" type="Script" id=2]
+[ext_resource path="res://scenes/scoreboard/scoreboard.gd" type="Script" id=2]
 [ext_resource path="res://scenes/scoreboard/images/Digital-0.png" type="Texture" id=3]
 
 [node name="scoreboard" type="TextureFrame"]
@@ -19,6 +19,7 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 0
 script/script = ExtResource( 2 )
+level = "3"
 
 [node name="score_decimal_left" type="TextureFrame" parent="."]
 

@@ -1,5 +1,5 @@
 extends Node2D
-var fase = 0
+export var fase = 0
 var globalScript
 var qntChutes = 0
 var lockInput = false
@@ -25,7 +25,10 @@ const animKicker = "Kicker/Cobrador/AnimationPlayer"
 const animBall = "ball/Bola/Sprite/AnimationPlayer"
 
 func _button_nextLvl_pressed():
-	globalScript.goToScene("res://scenes/jogo_goleiro/nivel02.tscn")
+	var nextScene = ""
+	if fase < 2: nextScene = "res://scenes/jogo_goleiro/nivel"+str(fase+2)+".tscn"
+	else: nextScene = "res://scenes/GUI/choose_game/choose_game.tscn"
+	globalScript.goToScene(nextScene)
 
 func _button_fimJogo_pressed(callMode):
 	get_node("janelaFim").show()

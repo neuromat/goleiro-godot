@@ -1,10 +1,11 @@
 extends TextureFrame
 
+export var level = ""
 var score_decimal_left
 var score_unit_left
 var score_decimal_right
 var score_unit_right
-
+var imageName = {"1":"Giz-", "2":"Impresso-", "3":"Digital-"}
 
 var texture_decimal_left =  ImageTexture.new()
 var texture_unit_left = ImageTexture.new()
@@ -16,10 +17,10 @@ func change(var left, var right):
 	score_unit_left = left % 10
 	score_decimal_right = int(right/10)
 	score_unit_right = right % 10
-	texture_decimal_left.load("res://scenes/scoreboard/images/Impresso-"+str(score_decimal_left)+".png")
-	texture_unit_left.load("res://scenes/scoreboard/images/Impresso-"+str(score_unit_left)+".png")
-	texture_decimal_right.load("res://scenes/scoreboard/images/Impresso-"+str(score_decimal_right)+".png")
-	texture_unit_right.load("res://scenes/scoreboard/images/Impresso-"+str(score_unit_right)+".png")
+	texture_decimal_left.load("res://scenes/scoreboard/images/"+imageName[level]+str(score_decimal_left)+".png")
+	texture_unit_left.load("res://scenes/scoreboard/images/"+imageName[level]+str(score_unit_left)+".png")
+	texture_decimal_right.load("res://scenes/scoreboard/images/"+imageName[level]+str(score_decimal_right)+".png")
+	texture_unit_right.load("res://scenes/scoreboard/images/"+imageName[level]+str(score_unit_right)+".png")
 	get_node("score_decimal_left").set_texture(texture_decimal_left)
 	get_node("score_units_left").set_texture(texture_unit_left)
 	get_node("score_decimal_right").set_texture(texture_decimal_right)

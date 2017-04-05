@@ -18,12 +18,12 @@ func avanca():
 	set_text(txt)
 	idx += 1
 
-func _on_AnimationPlayer_animation_started( name ):
-	set_hidden(false)
+func _on_AnimationPlayer_animation_started(name):
+	show()
 	texto = name
 	idx = 0
 	txt = ''
 
 func _on_AnimationPlayer_finished():
-	set_hidden(true)
+	hide()
 	set_text("")

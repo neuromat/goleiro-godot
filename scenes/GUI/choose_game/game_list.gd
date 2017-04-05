@@ -10,16 +10,17 @@ func _button_baseMotoraTempo_pressed():
 
 func _button_jogoGoleiro_pressed():
 	choosed = true;
-	cena = "res://scenes/jogo_goleiro/nivel01.tscn"
+	cena = "res://scenes/jogo_goleiro/nivel1.tscn"
 
 	get_node("b_jogoGoleiro").hide()
 	get_node("b_sair").hide()
-	get_node("description").hide()
+	get_node("description").set_text("Jogo do Goleiro")
+	get_node("description").set_align(Label.ALIGN_CENTER)
 	get_node("nomeUser").show()
 	get_node("b_continuar").show()
 	get_node("nomeUser").grab_focus()
-	#get_node("nomeUser").connect("text_changed",self,"teste")
-
+	get_node("b_menu_game").show()
+	get_node("name_descrition").show()
 	
 func _button_baseMemoria_pressed(value):
 	pass
@@ -29,7 +30,20 @@ func _button_continuar_pressed():
 		globalConfig.set_playerName(get_node("nomeUser").get_text())
 		print(get_node("nomeUser").get_text())
 		if choosed: globalScript.goToScene(cena)
-	
+		
+func _button_b_menu_game_pressed():
+	choosed = false
+	cena = ""
+	get_node("b_jogoGoleiro").show()
+	get_node("b_sair").show()
+	get_node("description").set_text("Você é um goleiro na hora do pênalti e deve decidir para onde pular (esquerda, direita ou centro) antes da bola sair. Atenção: cada batedor tem um estratégia própria  para escolher onde vai chutar. Mas cuidado, ele pode tentar te enganar!")
+	get_node("description").set_align(Label.ALIGN_FILL)
+	get_node("nomeUser").hide()
+	get_node("b_continuar").hide()
+	get_node("b_menu_game").hide()
+	get_node("name_descrition").hide()
+	pass
+
 func _quit():
 	globalScript.quit()
 
@@ -42,7 +56,7 @@ func _ready():
 	get_node("b_jogoGoleiro").connect("pressed",self,"_button_jogoGoleiro_pressed")
 	get_node("b_continuar").connect("pressed",self,"_button_continuar_pressed")
 	get_node("b_sair").connect("pressed",self,"_quit")
-	get_node("b_sair").connect("pressed",self,"_quit")
+	get_node("b_menu_game").connect("pressed",self,"_button_b_menu_game_pressed")
 	
 	get_node("nomeUser").hide()
 
