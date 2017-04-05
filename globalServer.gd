@@ -99,7 +99,10 @@ func _process(delta):
 					var dir = Directory.new()
 					if dir.remove("user://toSend/"+currentFileName) != OK: print("Erro ao deletar arquivo" + "user://toSend/"+currentFileName)
 					elif checkFilesToSend(): currentFileName = takeFile()
-		else: print("Arquivo não encontrado!")
+		else:
+			# Arquivo não foi aberto... Testar novamente se não tem arquivo
+			# para abrir. Se tem, então atualiza o nome do currentFileName
+			if checkFilesToSend(): currentFileName = takeFile()
 	else: 
 			if connection.is_connected( ) && !wait:
 				checkSend += connection.get_status()
@@ -117,4 +120,3 @@ func _process(delta):
 					print("Retornou OK_STREAM...")
 					wait = false
 					disconnect()
-

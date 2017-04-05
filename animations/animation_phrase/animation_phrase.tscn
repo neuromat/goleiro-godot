@@ -64,8 +64,4 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
-
-[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
-
 

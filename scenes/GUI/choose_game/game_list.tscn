@@ -21,7 +21,7 @@ draw_bg = true
 
 [sub_resource type="DynamicFont" id=2]
 
-font/size = 40
+font/size = 35
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 3 )
