@@ -565,8 +565,6 @@ anims/Errou-Meio = SubResource( 2 )
 
 [node name="Kicker" parent="." instance=ExtResource( 8 )]
 
-editor/display_folded = true
-
 [node name="trave" type="TextureFrame" parent="."]
 
 focus/ignore_mouse = true
@@ -593,6 +591,7 @@ margin/bottom = 332.0
 
 [node name="janelaFim" type="Control" parent="."]
 
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
