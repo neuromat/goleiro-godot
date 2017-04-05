@@ -487,8 +487,6 @@ params/scale = Vector2( 0.15, 0.15 )
 
 [node name="ball" parent="." instance=ExtResource( 6 )]
 
-editor/display_folded = true
-
 [node name="Sprite" parent="ball/Bola"]
 
 transform/pos = Vector2( 3111.01, 679.679 )
@@ -564,6 +562,8 @@ transform/scale = Vector2( 1.13026, 1 )
 anims/Errou-Meio = SubResource( 2 )
 
 [node name="Kicker" parent="." instance=ExtResource( 8 )]
+
+editor/display_folded = true
 
 [node name="trave" type="TextureFrame" parent="."]
 
