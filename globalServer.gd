@@ -1,7 +1,7 @@
 extends Node
 
-const port = 3560
-var ipServer = "127.0.0.1"
+const port = 54322
+var ipServer = "200.144.254.136"
 var connection # your connection (StreamPeerTCP) object
 var connected = false
 var timeout = 5
