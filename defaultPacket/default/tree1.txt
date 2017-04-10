@@ -1,5 +1,5 @@
 {"id":"grupo1-v1",
- "level":"0",,
+ "level":"0",
  "limitPlays":"12",
  "choices":"3",
  "depth":"1",
