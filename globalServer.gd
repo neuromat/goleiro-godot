@@ -62,6 +62,7 @@ func connect():
 
 	elif connection.get_status() == connection.STATUS_NONE or connection.get_status() == StreamPeerTCP.STATUS_ERROR:
 		print( "Couldn't connect to "+ipServer+" :"+str(port) )
+		set_process(false)
 
 	
 func _process(delta):

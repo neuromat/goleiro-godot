@@ -13,7 +13,7 @@ func checkConfigFile():
 
 func set_playerName(name):
 	PlayerName = name
-	
+
 func get_level():
 	return level
 

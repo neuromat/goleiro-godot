@@ -1,8 +1,22 @@
 extends Node
 
 var current_scene = null
+var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\ @" # Caracteres não permitido para "nome" de usuário e arquivo gerado
+
+func get_avoidChars():
+	return avoidChars
+ 
+func changeFileName(fileName):
+	# This function replace the forbiden characteres by "X"
+	for i in avoidChars: 
+		for j in range(fileName.length()):
+			if fileName[j] == i: fileName[j] = "X"
+	return fileName
+	
+
 
 func goToScene(scene):
+	# substituing the current scene by argument "scene"
 	current_scene.queue_free()
 	current_scene = load(scene).instance()
 	get_tree().get_root().add_child(current_scene)

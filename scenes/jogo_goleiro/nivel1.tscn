@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://scenes/jogo_goleiro/jogo_goleiro.gd" type="Script" id=1]
 [ext_resource path="res://images/background/bg_lvl_01.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://images/Interface/button.png" type="Texture" id=13]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=14]
+[ext_resource path="res://scenes/historicPlays/historicPlays.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -591,6 +592,9 @@ margin/bottom = 332.0
 
 [node name="scoreboard" parent="." instance=ExtResource( 11 )]
 
+margin/top = 90.0
+margin/bottom = 256.0
+
 [node name="janelaFim" type="Control" parent="."]
 
 visibility/visible = false
@@ -737,6 +741,8 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="historic_plays" parent="." instance=ExtResource( 15 )]
 
 [connection signal="animation_started" from="phrase/AnimationPlayer" to="phrase" method="_on_AnimationPlayer_animation_started"]
 

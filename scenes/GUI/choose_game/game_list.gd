@@ -28,7 +28,6 @@ func _button_baseMemoria_pressed(value):
 func _button_continuar_pressed():
 	if get_node("nomeUser").get_text() != "": 
 		globalConfig.set_playerName(get_node("nomeUser").get_text())
-		print(get_node("nomeUser").get_text())
 		if choosed: globalScript.goToScene(cena)
 		
 func _button_b_menu_game_pressed():
@@ -66,9 +65,15 @@ func _process(delta):
 	if Input.is_action_pressed("ui_enter_name") && choosed  && cena != "": _button_continuar_pressed()
 
 func _on_nomeUser_text_changed( text ):
-	# Aqui vai ficar a checagem do texto que será digitado no campo "nome"
-	var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\@"
+	# Aqui vai é a checagem em tempo real
+	# do texto que será digitado no campo "nome"
+	# Basicamente testamos o último caractere.
+	# Se for proibido, então retira.
+
+	var avoidChars  = globalScript.get_avoidChars()
 	var size = text.length()
+	
+	# Checking avoid characteres
 	if size > 0:
 		for i in avoidChars:
 			if text[size-1] == i:
@@ -76,7 +81,8 @@ func _on_nomeUser_text_changed( text ):
 				get_node("nomeUser").set_text(text)
 				get_node("nomeUser").set_cursor_pos(size-1)
 				break;
-
+	
+	# Checking the size of string
 	if text.length() > 15 : 
 		text = text.substr(0,15)
 		get_node("nomeUser").set_text(text)

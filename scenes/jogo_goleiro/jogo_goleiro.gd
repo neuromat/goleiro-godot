@@ -5,7 +5,7 @@ var qntChutes = 0
 var lockInput = false
 var timeLock = 0
 var defenseSeq = ""
-var kickSeq 
+var kickSeq = ""
 var timeHide = 2
 var animSpeed = 1
 var numGols = 0
@@ -88,7 +88,7 @@ func _ready():
 
 	# Temporário só para fazer os testes...
 	globalConfig.loadPacketConfFiles("user://packets/default")
-	
+
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
 	sequR = globalConfig.get_sequR(fase)
@@ -111,14 +111,15 @@ func _process(delta):
 	globalTime += delta
 	timeControlAnim += delta
 
-	# a variável lockInput é para travar as setas de chute
+	# a variável lockInput é a trava para as setas de chute
 	if lockInput == true:
 		if !animFlow():
 			get_node(animGoalKepper).seek(0,true)
 			get_node(animBall).seek(0,true)
 			get_node(animKicker).seek(0,true)
-			# We achieve the maximum number of defense. Stop the "process" mode.
 			_updatePlacar()
+			get_node("historic_plays").updateHistoric(defenseSeq,kickSeq)
+			# We achieve the maximum number of defense. Stop the "process" mode.
 			if qntChutes == defenseSeq.length():
 				globalServer.connect()
 				set_process(false)
@@ -158,7 +159,7 @@ func saveData(callMode):
 
 		# Creating file and write data
 		var playerName = globalConfig.get_playerName()
-		var restrictFileName = changeFileName(playerName)
+		var restrictFileName = globalScript.changeFileName(playerName)
 		fileName += "Plays_JG_" +  globalConfig.get_id(fase)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
 		var file = File.new()
 		var dir = Directory.new()
@@ -167,12 +168,5 @@ func saveData(callMode):
 		file.store_string(strData)
 		file.close()
 		savedGame= true
-	
-func changeFileName(fileName):
-	var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\ @"
-	for i in avoidChars: 
-		for j in range(fileName.length()):
-			if fileName[j] == i: fileName[j] = "X"
-	return fileName
 	
 	
