@@ -9,8 +9,8 @@
 [ext_resource path="res://animations/animation_goalkeper_lvl03/goalkeper.tscn" type="PackedScene" id=7]
 [ext_resource path="res://animations/animation_Kicker/cobrador.tscn" type="PackedScene" id=8]
 [ext_resource path="res://images/goal_post_lvl03.png" type="Texture" id=9]
-[ext_resource path="res://animations/animation_phrase/animation_phrase.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/scoreboard/scoreboard_lvl3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/scoreboard/scoreboard_lvl3.tscn" type="PackedScene" id=10]
+[ext_resource path="res://animations/animation_phrase/animation_phrase.tscn" type="PackedScene" id=11]
 [ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=12]
 [ext_resource path="res://images/Interface/button.png" type="Texture" id=13]
 [ext_resource path="res://themes/listButtons.tres" type="Theme" id=14]
@@ -582,18 +582,21 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 0
 
-[node name="phrase" parent="." instance=ExtResource( 10 )]
+[node name="scoreboard" parent="." instance=ExtResource( 10 )]
+
+margin/left = 90.0
+margin/top = 90.0
+margin/right = 390.0
+margin/bottom = 265.0
+stretch_mode = 0
+
+[node name="phrase" parent="." instance=ExtResource( 11 )]
 
 editor/display_folded = true
 margin/left = 373.0
 margin/top = 135.0
 margin/right = 989.0
 margin/bottom = 332.0
-
-[node name="scoreboard" parent="." instance=ExtResource( 11 )]
-
-margin/top = 90.0
-margin/bottom = 479.0
 
 [node name="janelaFim" type="Control" parent="."]
 

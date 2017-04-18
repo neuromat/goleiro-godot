@@ -6,15 +6,15 @@
 
 [node name="scoreboard" type="TextureFrame"]
 
-rect/scale = Vector2( 0.5, 0.5 )
+rect/scale = Vector2( 0.9, 0.9 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 660.0
-margin/bottom = 389.0
+margin/right = 305.0
+margin/bottom = 180.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 0
@@ -23,56 +23,60 @@ level = "2"
 
 [node name="score_decimal_left" type="TextureFrame" parent="."]
 
+rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 85.0
-margin/top = 60.0
-margin/right = 125.0
-margin/bottom = 110.0
+margin/left = 38.0
+margin/top = 25.0
+margin/right = 63.0
+margin/bottom = 55.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
 
 [node name="score_units_left" type="TextureFrame" parent="."]
 
+rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 176.0
-margin/top = 60.0
-margin/right = 216.0
-margin/bottom = 110.0
+margin/left = 81.0
+margin/top = 25.0
+margin/right = 106.0
+margin/bottom = 55.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
 
 [node name="score_decimal_right" type="TextureFrame" parent="."]
 
+rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 430.0
-margin/top = 60.0
-margin/right = 470.0
-margin/bottom = 110.0
+margin/left = 198.0
+margin/top = 25.0
+margin/right = 223.0
+margin/bottom = 55.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
 
 [node name="score_units_right" type="TextureFrame" parent="."]
 
+rect/scale = Vector2( 0.8, 0.8 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 529.0
-margin/top = 60.0
-margin/right = 569.0
-margin/bottom = 110.0
+margin/left = 244.0
+margin/top = 25.0
+margin/right = 269.0
+margin/bottom = 55.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 0
