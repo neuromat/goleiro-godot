@@ -60,6 +60,23 @@ func gen_sequR(fase,sequence):
 	return sequR.to_upper()
 	
 
+
+func get_playsToRelax(fase):
+	return level[fase]["playsToRelax"]
+
+func get_scoreboard(fase):
+	return level[fase]["scoreboard"]
+
+func get_finalScoreboard(fase):
+	return level[fase]["finalScoreboard"]
+
+func get_animationTypeJG(fase):
+	return level[fase]["animationTypeJG"]
+
+func get_animationTypeOthers(fase):
+	return level[fase]["animationTypeOthers"]
+
+
 func get_seqMode(fase):
 	if level[fase]["readSequ"] == "true" : return "readSequence"
 	else: return "readTree"

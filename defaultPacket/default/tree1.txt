@@ -27,6 +27,7 @@
  "animationTypeJG":"short",
  "animationTypeOthers":"short",
  "scoreboard":"true",
+ "finalScoreboard":"short",
  "playsToRelax":"0",
  "zeroPhaseJG":"true",
  "zeroPhaseSequ":"102",

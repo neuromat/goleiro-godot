@@ -29,5 +29,6 @@
  "animationTypeJG":"none",
  "animationTypeOthers":"none",
  "scoreboard":"true",
+ "finalScoreboard":"short",
  "playsToRelax":"30"
 }

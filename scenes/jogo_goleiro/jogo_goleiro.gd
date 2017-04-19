@@ -88,7 +88,7 @@ func _ready():
 
 	# Temporário só para fazer os testes...
 	globalConfig.loadPacketConfFiles("user://packets/default")
-
+	
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
 	sequR = globalConfig.get_sequR(fase)
@@ -105,8 +105,7 @@ func _ready():
 	get_node(animGoalKepper).set_speed(animSpeed)
 	get_node(animKicker).set_speed(animSpeed)
 	get_node(animBall).set_speed(animSpeed)
-	#OS.set_window_fullscreen(true)
-	
+
 func _process(delta):
 	globalTime += delta
 	timeControlAnim += delta
@@ -141,7 +140,7 @@ func saveData(callMode):
 		var fileName = ""
 		var rate = 0.0
 		var randomFlag = ""
-		var strData = "experimentGroup,game,playID,phase,gameTime,relaxTime,playerMachine,YYMMDD,HHMMSS,random,playerAlias,playLimit,totalCorrect,successRate,gameMode,status,move,waitedResult,ehRandom,optionChosen,correct,movementTime\n"
+		var strData = "experimentGroup,game,playID,phase,gameTime,relaxTime,playerMachine,YYMMDD,HHMMSS,random,playerAlias,limitPlays,totalCorrect,successRate,gameMode,status,playsToRelax,scoreboard,finalScoreboard,animationType,move,waitedResult,ehRandom,optionChosen,correct,movementTime\n"
 		var strCommonData = ""
 		if numKicks != 0 : rate = float(numDefenses)/float(numKicks)
 		randomize()
@@ -151,11 +150,37 @@ func saveData(callMode):
 		
 		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(fase)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
 		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)+","+str(rate)+","
-		strCommonData +=globalConfig.get_seqMode(fase)+","+str(callMode)+","
-		
+		strCommonData += globalConfig.get_seqMode(fase)+","+str(callMode)+","+globalConfig.get_playsToRelax(fase)+","+globalConfig.get_scoreboard(fase)+","
+		strCommonData += globalConfig.get_finalScoreboard(fase)+","+globalConfig.get_animationTypeJG(fase)+","
+
 		var historicPlaysArray = historicPlays.split("\n")
 		for line in range(0,historicPlaysArray.size()-1):
 			strData += strCommonData + str(line+1) +","+ historicPlaysArray[line]+"\n"
+
+		# Making context tree string
+		var tree = globalConfig.get_tree(fase)
+		var tree_string = "tree: "
+		for i in tree.keys():
+			tree_string += str(i) + ": "
+			for j in tree[i]:
+				tree_string += str(tree[i][j]) + ","
+			tree_string[tree_string.length()-1] = " "
+			tree_string += "|"
+		tree_string[tree_string.length()-1] = " "
+
+		# Making context tree string
+		var tree = globalConfig.get_tree(fase)
+		var tree_string = "tree: "
+		for i in tree.keys():
+			tree_string += str(i) + ": "
+			for j in range(0,tree[i].size()):
+				tree_string += str(tree[i][j]) + ","
+			tree_string[tree_string.length()-1] = " "
+			tree_string += "|"
+		tree_string[tree_string.length()-1] = " "
+
+		# Putting together tree, sequence of kicks and the rest of data
+		strData =  tree_string + "\nsequExecutada: " + kickSeq.left(numKicks) +"\n"+ strData
 
 		# Creating file and write data
 		var playerName = globalConfig.get_playerName()
