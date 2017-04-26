@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+bg_color = Color( 0.313726, 0.611765, 0.278431, 1 )
+light_color = Color( 0.529412, 0.862745, 0.45098, 1 )
+dark_color = Color( 0.172549, 0.270588, 0.137255, 1 )
+border_size = 0
+border_blend = true
+draw_bg = true
+
+[sub_resource type="DynamicFont" id=2]
+
+font/size = 60
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 1 )
+
+[node name="interval" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+
+[node name="background" type="Panel" parent="."]
+
+visibility/opacity = 0.9
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="text" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1280.0
+margin/bottom = 720.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.188235, 0.188235, 1 )
+text = "Intervalo no Jogo do Goleiro!\nPausa para descanso!\n\nAperte a barra de espaços\npara continuar!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

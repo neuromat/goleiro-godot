@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var texture_right_left =  ImageTexture.new()
 var texture_wrong_left = ImageTexture.new()

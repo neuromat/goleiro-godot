@@ -30,5 +30,5 @@
  "animationTypeOthers":"none",
  "scoreboard":"true",
  "finalScoreboard":"short",
- "playsToRelax":"30"
+ "playsToRelax":"3"
 }

@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/historicPlays/images/background.png" type="Texture" id=2]
 [ext_resource path="res://scenes/historicPlays/images/null.png" type="Texture" id=3]
 
-[node name="historic_plays" type="Node"]
+[node name="historic_plays" type="Node2D"]
 
 script/script = ExtResource( 1 )
 

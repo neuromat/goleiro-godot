@@ -62,7 +62,7 @@ func gen_sequR(fase,sequence):
 
 
 func get_playsToRelax(fase):
-	return level[fase]["playsToRelax"]
+	return int(level[fase]["playsToRelax"])
 
 func get_scoreboard(fase):
 	return level[fase]["scoreboard"]

@@ -28,7 +28,7 @@
  "animationTypeOthers":"short",
  "scoreboard":"true",
  "finalScoreboard":"short",
- "playsToRelax":"0",
+ "playsToRelax":"1",
  "zeroPhaseJG":"true",
  "zeroPhaseSequ":"102",
  "zeroPhasePlays":"8",

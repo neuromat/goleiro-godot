@@ -4,6 +4,8 @@ var globalScript
 var qntChutes = 0
 var lockInput = false
 var timeLock = 0
+var interval = 0
+var lockInterval = false
 var defenseSeq = ""
 var kickSeq = ""
 var timeHide = 2
@@ -49,6 +51,7 @@ func _resultKick():
 	lastRecordedTime = globalTime
 
 func _button_kick_pressed(kick):
+	if interval >0 : interval = interval - 1
 	get_node("b_chutes").hide()
 	lockInput = true
 	defenseSeq += kick
@@ -93,6 +96,7 @@ func _ready():
 	kickSeq = globalConfig.get_sequ(fase)
 	sequR = globalConfig.get_sequR(fase)
 	qntChutes =  globalConfig.get_qntChutes(fase)
+	interval = globalConfig.get_playsToRelax(fase)
 
 	get_node("b_endGame").connect("pressed",self,"_button_fimJogo_pressed",["INTERRUPTED BY USER"])
 	get_node("janelaFim/b_nextLvl").connect("pressed",self,"_button_nextLvl_pressed")
@@ -106,6 +110,22 @@ func _ready():
 	get_node(animKicker).set_speed(animSpeed)
 	get_node(animBall).set_speed(animSpeed)
 
+
+func _input(event):
+	if Input.is_action_pressed("ui_space"): _unlockInterval()
+
+func _unlockInterval():
+	interval = globalConfig.get_playsToRelax(fase)
+	get_node("interval").hide()
+	set_process(true)
+	set_process_input(false)
+
+func _lockInterval():
+	if interval == 0:
+		get_node("interval").show()
+		set_process(false)
+		set_process_input(true)
+
 func _process(delta):
 	globalTime += delta
 	timeControlAnim += delta
@@ -118,6 +138,7 @@ func _process(delta):
 			get_node(animKicker).seek(0,true)
 			_updatePlacar()
 			get_node("historic_plays").updateHistoric(defenseSeq,kickSeq)
+			if globalConfig.get_playsToRelax(fase) > 0: _lockInterval()
 			# We achieve the maximum number of defense. Stop the "process" mode.
 			if qntChutes == defenseSeq.length():
 				globalServer.connect()
@@ -150,7 +171,7 @@ func saveData(callMode):
 		
 		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(fase)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
 		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)+","+str(rate)+","
-		strCommonData += globalConfig.get_seqMode(fase)+","+str(callMode)+","+globalConfig.get_playsToRelax(fase)+","+globalConfig.get_scoreboard(fase)+","
+		strCommonData += globalConfig.get_seqMode(fase)+","+str(callMode)+","+str(globalConfig.get_playsToRelax(fase))+","+globalConfig.get_scoreboard(fase)+","
 		strCommonData += globalConfig.get_finalScoreboard(fase)+","+globalConfig.get_animationTypeJG(fase)+","
 
 		var historicPlaysArray = historicPlays.split("\n")
