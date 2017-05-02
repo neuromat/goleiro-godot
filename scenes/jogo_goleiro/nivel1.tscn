@@ -384,7 +384,7 @@ font/font = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=8]
 
-font/size = 55
+font/size = 40
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 13 )
@@ -392,7 +392,6 @@ font/font = ExtResource( 13 )
 [node name="raiz_jogoGoleiro_nl1" type="Node2D"]
 
 script/script = ExtResource( 1 )
-fase = 0
 
 [node name="background" type="TextureFrame" parent="."]
 
@@ -592,7 +591,6 @@ margin/bottom = 265.0
 
 [node name="phrase" parent="." instance=ExtResource( 11 )]
 
-editor/display_folded = true
 margin/left = 373.0
 margin/top = 135.0
 margin/right = 989.0
@@ -602,8 +600,6 @@ margin/bottom = 332.0
 
 [node name="janelaFim" type="Control" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -714,7 +710,6 @@ max_lines_visible = -1
 [node name="b_nextLvl" type="TextureButton" parent="janelaFim"]
 
 process/pause_mode = 1
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2

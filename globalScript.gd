@@ -2,6 +2,13 @@ extends Node
 
 var current_scene = null
 var avoidChars  = "#<$+%>!`&*\'|{?\"=}/:\\ @" # Caracteres não permitido para "nome" de usuário e arquivo gerado
+var currentLevel = 0 setget set_currentLevel,get_currentLevel
+
+func get_currentLevel():
+	return currentLevel
+
+func set_currentLevel(level):
+	currentLevel = level
 
 func get_avoidChars():
 	return avoidChars
@@ -12,8 +19,6 @@ func changeFileName(fileName):
 		for j in range(fileName.length()):
 			if fileName[j] == i: fileName[j] = "X"
 	return fileName
-	
-
 
 func goToScene(scene):
 	# substituing the current scene by argument "scene"

@@ -7,6 +7,8 @@ var packName = "" #Valor do pacote escolhido
 var sequR = ["","","","","","",""] #sequência que define se a jogada corrente é ou não aleatória
 var seqKick = ["","","","","","",""] #sequência de chutes
 
+func get_numLvls():
+	return level.size()
 
 func checkConfigFile():
 	pass
@@ -19,6 +21,13 @@ func get_level():
 
 func get_sequR(fase):
 	return sequR[fase]
+
+func has_scoreboard(fase):
+	if level[fase]["scoreboard"].to_upper() == "TRUE" : return true
+	else: return false
+
+func get_animationTypeJG(fase):
+	return level[fase]["animationTypeJG"]
 
 func get_sequ(fase):
 	var seqPack = level[fase]["sequ"]
@@ -69,9 +78,10 @@ func get_scoreboard(fase):
 
 func get_finalScoreboard(fase):
 	return level[fase]["finalScoreboard"]
-
-func get_animationTypeJG(fase):
-	return level[fase]["animationTypeJG"]
+	
+func has_phaseZero():
+	if level[0]["zeroPhaseJG"].to_upper() == "TRUE" : return true
+	else: return false
 
 func get_animationTypeOthers(fase):
 	return level[fase]["animationTypeOthers"]

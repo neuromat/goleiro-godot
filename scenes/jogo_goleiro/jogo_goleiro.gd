@@ -1,11 +1,12 @@
 extends Node2D
-export var fase = 0
+var fase = 0
 var globalScript
 var qntChutes = 0
 var lockInput = false
 var timeLock = 0
 var interval = 0
 var lockInterval = false
+var lockAnimationPhrase = false # locker for animation
 var defenseSeq = ""
 var kickSeq = ""
 var timeHide = 2
@@ -28,14 +29,45 @@ const animBall = "ball/Bola/Sprite/AnimationPlayer"
 
 func _button_nextLvl_pressed():
 	var nextScene = ""
-	if fase < 2: nextScene = "res://scenes/jogo_goleiro/nivel"+str(fase+2)+".tscn"
-	else: nextScene = "res://scenes/GUI/choose_game/choose_game.tscn"
+	var nextSceneDic = {}
+	if globalScript.get_currentLevel() == globalConfig.get_numLvls()-1:
+		# We played all phases
+		nextScene = "res://scenes/GUI/choose_game/choose_game.tscn"
+		globalScript.currentLevel = 0
+		globalScript.goToScene(nextScene)
+		return
+	if fase > 3:
+		# After phase 3, all scenes will use lvl3 pattern
+		nextScene = "res://scenes/jogo_goleiro/nivel3.tscn"
+		globalScript.currentLevel += 1
+		globalScript.goToScene(nextScene)
+		return
+	if globalConfig.has_phaseZero(): nextSceneDic = {0:"1", 1:"1", 2:"2",3:"3",4:"3"}
+	else: nextSceneDic = {0:"1", 1:"2", 2:"3",3:"3",4:"3"}
+	nextScene = "res://scenes/jogo_goleiro/nivel"+nextSceneDic[fase+1]+".tscn"
+	globalScript.currentLevel += 1
 	globalScript.goToScene(nextScene)
 
 func _button_fimJogo_pressed(callMode):
 	get_node("janelaFim").show()
+	if globalScript.get_currentLevel() == globalConfig.get_numLvls()-1:
+		# Finalizada as fases
+		get_node("janelaFim/b_nextLvl/Label").set_text("Menu de\njogos")
+	else:
+		# Ainda tem mais fases para serem jogadas
+		get_node("janelaFim/b_nextLvl/Label").set_text("Avançar")
 	get_node("b_endGame").hide()
-	get_node("janelaFim/scoreBoard").set_text("Jogo do Gooleiro fase 1\n"+str(numDefenses)+"/"+str(numKicks))
+	
+	# Dependendo do arquivo de configuração, se o parâmetro
+	# "finalScoreboard" for none, short ou long, então a
+	# fase deve aparecer de maneira diferenciada
+	var phrase = ""
+	var rate =0.0
+	if numKicks != 0 : rate = float(numDefenses)/float(numKicks)
+	if globalConfig.get_finalScoreboard(fase) == "none" : phrase = "Jogo do Goleiro Fase "+str(fase)
+	elif globalConfig.get_finalScoreboard(fase) == "short" : phrase = "Jogo do Goleiro "+str(fase)+"\n"+str(numDefenses)+"/"+str(numKicks)
+	else: phrase = "Jogo do Goleiro "+str(fase)+"\n"+str(numDefenses)+" defesas em "+str(numKicks)+" chutes ("+str(rate)+"%)"
+	get_node("janelaFim/scoreBoard").set_text(phrase)
 	saveData(callMode)
 
 func _resultKick():
@@ -69,8 +101,10 @@ func animFlow():
 				get_node(animGoalKepper).play(goal[defenseSeq[numKicks-1]])
 				get_node(animBall).play(goal[kickSeq[numKicks-1]])
 	if get_node(animGoalKepper).is_playing() && get_node(animKicker).get_current_animation_pos() >= 0.75:
-		if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: get_node("phrase/AnimationPlayer").play("defendeu")
-		else: get_node("phrase/AnimationPlayer").play("perdeu")
+		# The variable "animationPhrase" lock or unlock the phrase animation 
+		if !lockAnimationPhrase:
+			if defenseSeq[numKicks-1] == kickSeq[numKicks-1]: get_node("phrase/AnimationPlayer").play("defendeu")
+			else: get_node("phrase/AnimationPlayer").play("perdeu")
 		
 	if !get_node(animGoalKepper).is_playing() && !get_node(animKicker).is_playing() && !get_node(animBall).is_playing() && !get_node("phrase/AnimationPlayer").is_playing(): return false
 	else: return true
@@ -82,16 +116,14 @@ func _quit():
 	globalScript.quit()
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	set_process(true)
 	globalScript = get_node("/root/globalScript")
 	globalConfig = get_node("/root/globalConfig")
 	globalServer = get_node("/root/globalServer")
+	fase = globalScript.get_currentLevel()
 
 	# Temporário só para fazer os testes...
 	globalConfig.loadPacketConfFiles("user://packets/default")
-	
+
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
 	sequR = globalConfig.get_sequR(fase)
@@ -105,12 +137,20 @@ func _ready():
 	get_node("b_chutes/b_esquerda").connect("pressed",self,"_button_kick_pressed",["0"])
 	get_node("b_chutes/b_direita").connect("pressed",self,"_button_kick_pressed",["2"])
 	get_node("janelaFim").hide()
+	if !globalConfig.has_scoreboard(fase ):
+		get_node("historic_plays").hide()
+		get_node("scoreboard").hide()
+
 	get_node("janelaFim/nome").set_text(globalConfig.get_playerName().to_upper())
 	get_node(animGoalKepper).set_speed(animSpeed)
 	get_node(animKicker).set_speed(animSpeed)
 	get_node(animBall).set_speed(animSpeed)
-
-
+	if globalConfig.get_animationTypeJG(fase) == "long": get_node("phrase/AnimationPlayer").set_speed(0.5)
+	elif globalConfig.get_animationTypeJG(fase) == "short": get_node("phrase/AnimationPlayer").set_speed(1.0)
+	else: lockAnimationPhrase = true
+	
+	set_process(true)
+	
 func _input(event):
 	if Input.is_action_pressed("ui_space"): _unlockInterval()
 

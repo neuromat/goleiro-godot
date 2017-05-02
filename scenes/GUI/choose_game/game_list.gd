@@ -5,8 +5,6 @@ var globalConfig
 var choosed = false
 var cena = ""
 
-func _button_baseMotoraTempo_pressed():
-	globalScript.nextScene()
 
 func _button_jogoGoleiro_pressed():
 	choosed = true;
@@ -21,14 +19,13 @@ func _button_jogoGoleiro_pressed():
 	get_node("nomeUser").grab_focus()
 	get_node("b_menu_game").show()
 	get_node("name_descrition").show()
-	
-func _button_baseMemoria_pressed(value):
-	pass
 
 func _button_continuar_pressed():
 	if get_node("nomeUser").get_text() != "": 
 		globalConfig.set_playerName(get_node("nomeUser").get_text())
-		if choosed: globalScript.goToScene(cena)
+		if choosed: 
+			globalScript.currentLevel = 0
+			globalScript.goToScene(cena)
 		
 func _button_b_menu_game_pressed():
 	choosed = false

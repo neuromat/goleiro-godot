@@ -392,7 +392,6 @@ font/font = ExtResource( 13 )
 [node name="raiz_jogoGoleiro_nl1" type="Node2D"]
 
 script/script = ExtResource( 1 )
-fase = 2
 
 [node name="background" type="TextureFrame" parent="."]
 
@@ -603,8 +602,6 @@ margin/bottom = 332.0
 
 [node name="janelaFim" type="Control" parent="."]
 
-editor/display_folded = true
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -740,7 +737,7 @@ margin/top = 0.0
 margin/right = 436.0
 margin/bottom = 162.0
 custom_fonts/font = SubResource( 8 )
-text = "Menu de \njogos"
+text = "Avançar"
 align = 1
 valign = 1
 percent_visible = 1.0
