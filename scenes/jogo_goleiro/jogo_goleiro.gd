@@ -6,7 +6,7 @@ var lockInput = false
 var timeLock = 0
 var interval = 0
 var lockInterval = false
-var lockAnimationPhrase = false # locker for animation
+var lockAnimationPhrase = false # locker for phrase animation
 var defenseSeq = ""
 var kickSeq = ""
 var timeHide = 2
@@ -121,8 +121,9 @@ func _ready():
 	globalServer = get_node("/root/globalServer")
 	fase = globalScript.get_currentLevel()
 
+	
 	# Temporário só para fazer os testes...
-	globalConfig.loadPacketConfFiles("user://packets/default")
+	# globalConfig.loadPacketConfFiles("user://packets/default")
 
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
@@ -137,7 +138,7 @@ func _ready():
 	get_node("b_chutes/b_esquerda").connect("pressed",self,"_button_kick_pressed",["0"])
 	get_node("b_chutes/b_direita").connect("pressed",self,"_button_kick_pressed",["2"])
 	get_node("janelaFim").hide()
-	if !globalConfig.has_scoreboard(fase ):
+	if !globalConfig.has_scoreboard(fase):
 		get_node("historic_plays").hide()
 		get_node("scoreboard").hide()
 

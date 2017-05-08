@@ -7,6 +7,32 @@ var packName = "" #Valor do pacote escolhido
 var sequR = ["","","","","","",""] #sequência que define se a jogada corrente é ou não aleatória
 var seqKick = ["","","","","","",""] #sequência de chutes
 
+# Cada nome de jogo está associado a uma cena inicial.
+# Talvez criar um id_game seja melhor do que o "nome"
+var menu_idToScene = {
+	1:"",
+    2:"res://scenes/jogo_goleiro/nivel1.tscn",
+    3:"",
+    4:"",
+	5:""
+	}
+
+func get_scene(idGame):
+	if menu_idToScene.has(idGame) : return menu_idToScene[idGame]
+	else: null
+
+func get_menu():
+	var menuFile = level[0]
+	var order = []
+	var menu = []
+	if !menuFile.has("menus") : return null
+	for i in range(0,menuFile["menus"].size()):
+		for j in range(0,menuFile["menus"].size()): 
+			if i == int(menuFile["menus"][j]["sequMenu"]) && i != 0:
+				menu.insert(i-1,{"gameID":int(menuFile["menus"][j]["game"]), "title":menuFile["menus"][j]["title"]})
+				break
+	return menu
+
 func get_numLvls():
 	return level.size()
 

@@ -4,15 +4,23 @@ var globalScript
 var globalConfig
 var choosed = false
 var cena = ""
+var menu = []
 
-
-func _button_jogoGoleiro_pressed():
+func _button_game_pressed(buttonNumber):
 	choosed = true;
-	cena = "res://scenes/jogo_goleiro/nivel1.tscn"
 
-	get_node("b_jogoGoleiro").hide()
+	cena = globalConfig.get_scene(menu[buttonNumber]["gameID"])
+
+	get_node("b_game0").hide()
+	get_node("b_game1").hide()
+	get_node("b_game2").hide()
+	get_node("b_game3").hide()
+	get_node("b_game4").hide()
+	get_node("b_game5").hide()
+
+	
 	get_node("b_sair").hide()
-	get_node("description").set_text("Jogo do Goleiro")
+	get_node("description").set_text(menu[buttonNumber]["title"])
 	get_node("description").set_align(Label.ALIGN_CENTER)
 	get_node("nomeUser").show()
 	get_node("b_continuar").show()
@@ -23,14 +31,18 @@ func _button_jogoGoleiro_pressed():
 func _button_continuar_pressed():
 	if get_node("nomeUser").get_text() != "": 
 		globalConfig.set_playerName(get_node("nomeUser").get_text())
-		if choosed: 
+		if choosed && cena != "": 
 			globalScript.currentLevel = 0
 			globalScript.goToScene(cena)
 		
 func _button_b_menu_game_pressed():
 	choosed = false
 	cena = ""
-	get_node("b_jogoGoleiro").show()
+	
+	for i in range (0,menu.size()):
+		get_node("b_game"+str(5-i)).show()
+		if i > 5: break
+
 	get_node("b_sair").show()
 	get_node("description").set_text("Você é um goleiro na hora do pênalti e deve decidir para onde pular (esquerda, direita ou centro) antes da bola sair. Atenção: cada batedor tem um estratégia própria  para escolher onde vai chutar. Mas cuidado, ele pode tentar te enganar!")
 	get_node("description").set_align(Label.ALIGN_FILL)
@@ -44,19 +56,28 @@ func _quit():
 	globalScript.quit()
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+
 	set_process(true)
 	globalScript = get_node("/root/globalScript")
 	globalConfig = get_node("/root/globalConfig")
-	get_node("b_jogoGoleiro").connect("pressed",self,"_button_jogoGoleiro_pressed")
+	menu = globalConfig.get_menu()
+	
+	var aux = 6-menu.size()
+	print(aux)
+	for i in range (0,menu.size()):
+		get_node("b_game"+str(i+aux)).connect("pressed",self,"_button_game_pressed",[i])
+		get_node("b_game"+str(i+aux)+"/Label").set_text(menu[i]["title"])
+		if i > 6: break
+	for i in range (0,aux):
+		get_node("b_game"+str(i)).hide()
+		
+	#get_node("b_game06").connect("pressed",self,"_button_game_pressed",[5])
 	get_node("b_continuar").connect("pressed",self,"_button_continuar_pressed")
 	get_node("b_sair").connect("pressed",self,"_quit")
 	get_node("b_menu_game").connect("pressed",self,"_button_b_menu_game_pressed")
 	
 	get_node("nomeUser").hide()
 
-	#get_node("b_continuar").hide()
 
 func _process(delta):
 	if Input.is_action_pressed("ui_enter_name") && choosed  && cena != "": _button_continuar_pressed()

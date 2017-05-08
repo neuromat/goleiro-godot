@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://images/Interface/box_title.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GUI/choose_game/game_list.gd" type="Script" id=2]
@@ -28,7 +28,7 @@ font/font = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 
-font/size = 28
+font/size = 25
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 3 )
@@ -46,6 +46,14 @@ font/size = 18
 font/use_mipmaps = true
 font/use_filter = true
 font/font = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 20
+extra_spacing/bottom = -3
+font/use_mipmaps = true
+font/use_filter = true
+font/font = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=6]
 
@@ -67,7 +75,7 @@ size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 360.0
 margin/right = 780.0
-margin/bottom = -275.0
+margin/bottom = -391.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 0
@@ -99,7 +107,81 @@ focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 
-[node name="b_jogoGoleiro" type="TextureButton" parent="."]
+[node name="b_game0" type="TextureButton" parent="."]
+
+editor/display_folded = true
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 215.0
+margin/top = 285.0
+margin/right = -221.0
+margin/bottom = 340.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 1, 0.25 )
+
+[node name="Label" type="Label" parent="b_game0"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Jogo do Goleiro"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_game1" type="TextureButton" parent="."]
+
+editor/display_folded = true
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 215.0
+margin/top = 340.0
+margin/right = -221.0
+margin/bottom = 395.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 1, 0.25 )
+
+[node name="Label" type="Label" parent="b_game1"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Jogo do Goleiro"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_game2" type="TextureButton" parent="."]
 
 editor/display_folded = true
 anchor/left = 3
@@ -109,16 +191,16 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 210.0
-margin/top = 460.0
+margin/top = 395.0
 margin/right = -226.0
-margin/bottom = 536.0
+margin/bottom = 450.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 textures/normal = ExtResource( 4 )
-params/scale = Vector2( 1, 0.35 )
+params/scale = Vector2( 1, 0.25 )
 
-[node name="Label" type="Label" parent="b_jogoGoleiro"]
+[node name="Label" type="Label" parent="b_game2"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -126,8 +208,119 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 430.0
-margin/bottom = 78.0
+margin/right = 436.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Jogo do Goleiro"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_game3" type="TextureButton" parent="."]
+
+editor/display_folded = true
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 210.0
+margin/top = 450.0
+margin/right = -226.0
+margin/bottom = 505.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 1, 0.25 )
+
+[node name="Label" type="Label" parent="b_game3"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Jogo do Goleiro"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_game4" type="TextureButton" parent="."]
+
+editor/display_folded = true
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 210.0
+margin/top = 505.0
+margin/right = -226.0
+margin/bottom = 560.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 1, 0.25 )
+
+[node name="Label" type="Label" parent="b_game4"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Jogo do Goleiro"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="b_game5" type="TextureButton" parent="."]
+
+editor/display_folded = true
+anchor/left = 3
+anchor/right = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 210.0
+margin/top = 560.0
+margin/right = -226.0
+margin/bottom = 615.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/scale = Vector2( 1, 0.25 )
+
+[node name="Label" type="Label" parent="b_game5"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 436.0
+margin/bottom = 55.0
 custom_fonts/font = SubResource( 3 )
 text = "Jogo do Goleiro"
 align = 1
@@ -146,9 +339,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 110.0
-margin/top = 525.0
+margin/top = 630.0
 margin/right = -108.0
-margin/bottom = 601.0
+margin/bottom = 706.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -184,9 +377,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 110.0
-margin/top = 525.0
+margin/top = 565.0
 margin/right = -108.0
-margin/bottom = 601.0
+margin/bottom = 641.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -221,10 +414,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 105.0
-margin/top = 460.0
-margin/right = -113.0
-margin/bottom = 536.0
+margin/left = 110.0
+margin/top = 630.0
+margin/right = -108.0
+margin/bottom = 706.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -253,10 +446,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 35.0
-margin/top = 9.0
-margin/right = 468.0
-margin/bottom = 87.0
+margin/left = 21.0
+margin/top = 28.0
+margin/right = 471.0
+margin/bottom = 84.0
 custom_fonts/font = SubResource( 3 )
 text = "O jogo do goleiro"
 align = 1
@@ -271,11 +464,11 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 48.0
-margin/top = 88.0
-margin/right = 461.0
-margin/bottom = 508.0
-custom_fonts/font = SubResource( 3 )
+margin/left = 45.0
+margin/top = 110.0
+margin/right = 465.0
+margin/bottom = 280.0
+custom_fonts/font = SubResource( 7 )
 text = "Você é um goleiro na hora do pênalti e deve decidir para onde pular (esquerda, direita ou centro) antes da bola sair. Atenção: cada batedor tem um estratégia própria  para escolher onde vai chutar. Mas cuidado, ele pode tentar te enganar!"
 align = 3
 autowrap = true
