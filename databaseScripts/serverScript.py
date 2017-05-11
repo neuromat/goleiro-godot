@@ -2,7 +2,8 @@
 
 from socketserver import *
 import os  
-
+from config import config
+from insert import insertDB
 
 def make_game_key(fileName):
 	splited = fileName.split(',')
@@ -39,19 +40,21 @@ class MyTCPHandler(StreamRequestHandler):
 				else: fileContent += data
 
 
-
 			if fileManage == False and os.path.isfile("./receivedFiles/"+fileName) == False:
 				if os.path.isdir("./receivedFiles/") == False:
 					os.mkdir("receivedFiles")
 				newFile = open("./receivedFiles/"+fileName, 'w')
 				newFile.write(fileContent)
-				result = make_game_key(fileName)
-				if result is "": print("Formato de arquivo recebido com problema!")
-				print(result)
+				gameKey = make_game_key(fileName)
+				if gameKey is "": print("Nome do arquivo recebido fora do padrão...")
+				elif insertDB(gameKey,fileContent) == False: print("Não gravou no banco de dados!")
+				else: print("Gravou no banco de dados!")
+				fileContent = ""
 
 			if streamData == True and fileManage == False:
 				print("Enviando... OK_FILE\n")
 				self.wfile.write(b"OK_FILE")
+
 		if streamData == False:
 			print("Enviando... OK_STREAM\n")
 			self.wfile.write(b"OK_STREAM")

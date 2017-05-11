@@ -123,7 +123,7 @@ func _ready():
 
 	
 	# Temporário só para fazer os testes...
-	# globalConfig.loadPacketConfFiles("user://packets/default")
+	globalConfig.loadPacketConfFiles("user://packets/default")
 
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
@@ -201,14 +201,13 @@ func saveData(callMode):
 		var strDateTime = ""
 		var fileName = ""
 		var rate = 0.0
-		var randomFlag = ""
+		var randomFlagStr = ""
 		var strData = "experimentGroup,game,playID,phase,gameTime,relaxTime,playerMachine,YYMMDD,HHMMSS,random,playerAlias,limitPlays,totalCorrect,successRate,gameMode,status,playsToRelax,scoreboard,finalScoreboard,animationType,move,waitedResult,ehRandom,optionChosen,correct,movementTime\n"
 		var strCommonData = ""
 		if numKicks != 0 : rate = float(numDefenses)/float(numKicks)
 		randomize()
-		randomFlag = str(round(rand_range(0,999)))
-		strDateTime = str(dateTime.year)+str(dateTime.month)+str(dateTime.day)+","
-		strDateTime += str(dateTime.hour)+str(dateTime.minute)+str(dateTime.second)+","+randomFlag
+		randomFlagStr = "%03d" % round(rand_range(0,999))
+		strDateTime = "%02d%02d%02d,%02d%02d%02d,%s" % [dateTime.year%100, dateTime.month, dateTime.day,dateTime.hour,dateTime.minute,dateTime.second,randomFlagStr]
 		
 		strCommonData += globalConfig.get_packName() + ",JG,"+ globalConfig.get_id(fase)+",ph1,"+str(globalTime)+",0,XX-XX,"+strDateTime+","
 		strCommonData += globalConfig.get_playerName()+","+ str(numKicks)+","+str(numDefenses)+","+str(rate)+","
@@ -247,7 +246,7 @@ func saveData(callMode):
 		# Creating file and write data
 		var playerName = globalConfig.get_playerName()
 		var restrictFileName = globalScript.changeFileName(playerName)
-		fileName += "Plays_JG_" +  globalConfig.get_id(fase)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlag
+		fileName += "Plays_JG_" +  globalConfig.get_id(fase)+ "_"+restrictFileName+"_"+strDateTime+"_"+randomFlagStr
 		var file = File.new()
 		var dir = Directory.new()
 		if ! dir.dir_exists ("user://toSend/"): dir.make_dir("user://toSend/")
