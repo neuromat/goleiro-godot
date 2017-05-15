@@ -93,7 +93,6 @@ func gen_sequR(fase,sequence):
 		sufix += "-"
 	sequR = sufix + sequR
 	return sequR.to_upper()
-	
 
 
 func get_playsToRelax(fase):

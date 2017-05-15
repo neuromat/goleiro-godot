@@ -124,6 +124,8 @@ func _ready():
 	
 	# Temporário só para fazer os testes...
 	globalConfig.loadPacketConfFiles("user://packets/default")
+	globalConfig.setPackName("debug-testes")
+	globalConfig.set_playerName("nome-debug")
 
 	#Gerando a sequência de chutes e de aleatoriedade
 	kickSeq = globalConfig.get_sequ(fase)
@@ -233,12 +235,12 @@ func saveData(callMode):
 		var tree = globalConfig.get_tree(fase)
 		var tree_string = "tree: "
 		for i in tree.keys():
-			tree_string += str(i) + ": "
-			for j in range(0,tree[i].size()):
-				tree_string += str(tree[i][j]) + ","
+			tree_string += str(i) + ";"
+			for j in range(0,tree[i].size()-1):
+				tree_string += str(tree[i][j]) + ";"
 			tree_string[tree_string.length()-1] = " "
-			tree_string += "|"
-		tree_string[tree_string.length()-1] = " "
+			tree_string += "| "
+		tree_string[tree_string.length()-2] = " "
 
 		# Putting together tree, sequence of kicks and the rest of data
 		strData =  tree_string + "\nsequExecutada: " + kickSeq.left(numKicks) +"\n"+ strData
