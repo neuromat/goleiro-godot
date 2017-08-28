@@ -499,66 +499,89 @@ transform/scale = Vector2( 0.571655, 0.571655 )
 [node name="goalKeeper" parent="." instance=ExtResource( 7 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 627.186, 499.958 )
+transform/pos = Vector2( 664.335, 486.192 )
+transform/scale = Vector2( 0.751681, 0.751681 )
 
 [node name="R-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 132.796, -397.222 )
-transform/scale = Vector2( 1, 1 )
+transform/pos = Vector2( 48.6595, -104.603 )
+transform/scale = Vector2( 1.31075, 1.07428 )
 
 [node name="R-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 359.19, -138.959 )
-transform/scale = Vector2( 1, 1 )
-
-[node name="R-Hand" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( 499.008, -452.471 )
-transform/rot = 65.5008
-transform/scale = Vector2( 0.999998, 0.999998 )
+transform/pos = Vector2( 127.096, -79.2202 )
+transform/rot = 14.8401
+transform/scale = Vector2( 1.32239, 1.05992 )
 
 [node name="L-Arm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -191.614, -360.525 )
-transform/rot = 35.6975
+transform/pos = Vector2( -35.0715, -99.0895 )
+transform/scale = Vector2( 1.26458, 1.12826 )
 
 [node name="L-Forearm" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -377.667, -67.1931 )
-transform/rot = -56.3999
-
-[node name="L-Hand" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( -575.639, -319.893 )
-transform/rot = -54.7781
-transform/scale = Vector2( 0.999999, 0.999999 )
-
-[node name="L-Thigh" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( -55.9492, 1.15283 )
-
-[node name="R-Thigh" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( 63.5498, 2.09375 )
-transform/scale = Vector2( 1, 1 )
-
-[node name="R-Leg" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( 430.477, 105.479 )
-
-[node name="L-Leg" parent="goalKeeper/Goleiro"]
-
-transform/pos = Vector2( -409.653, 158.161 )
+transform/pos = Vector2( -112.918, -56.8129 )
+transform/rot = -24.4823
+transform/scale = Vector2( 1.30375, 1.08277 )
 
 [node name="L-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( -526.625, 568.521 )
-transform/scale = Vector2( 1.13398, 1 )
+transform/pos = Vector2( -70.4651, 158.765 )
+transform/rot = -113.704
+transform/scale = Vector2( 1.13585, 1.16344 )
 
 [node name="R-Foot" parent="goalKeeper/Goleiro"]
 
-transform/pos = Vector2( 567.453, 565.962 )
-transform/scale = Vector2( 1.13026, 1 )
+transform/pos = Vector2( 76.9684, 159.513 )
+transform/scale = Vector2( 1.19637, 0.931228 )
+
+[node name="R-Leg" parent="goalKeeper/Goleiro"]
+
+transform/pos = Vector2( 76.6936, 71.2764 )
+transform/rot = 1.96149
+transform/scale = Vector2( 1.02842, 0.957617 )
+
+[node name="L-Leg" parent="goalKeeper/Goleiro"]
+
+transform/pos = Vector2( -63.8818, 65.5579 )
+transform/rot = -5.3072
+transform/scale = Vector2( 1.17335, 0.988476 )
+
+[node name="L-Thigh" parent="goalKeeper/Goleiro"]
+
+transform/pos = Vector2( -13.5973, -6.58313 )
+transform/rot = -25.8878
+transform/scale = Vector2( 1.15713, 0.990243 )
+
+[node name="R-Thigh" parent="goalKeeper/Goleiro"]
+
+transform/pos = Vector2( 11.0099, 1.21533 )
+transform/rot = 36.9364
+transform/scale = Vector2( 0.944188, 1.04077 )
+
+[node name="L-Thigh 2" parent="goalKeeper/Goleiro/Hip"]
+
+transform/rot = -23.3472
+
+[node name="L-Leg 2" parent="goalKeeper/Goleiro/Hip/L-Thigh 2"]
+
+transform/pos = Vector2( -11.9183, 86.5263 )
+transform/rot = 17.3527
+transform/scale = Vector2( 1.00517, 1.01049 )
+
+[node name="R-Thigh" parent="goalKeeper/Goleiro/Hip"]
+
+transform/rot = 33.7698
+
+[node name="R-Leg" parent="goalKeeper/Goleiro/Hip/R-Thigh"]
+
+transform/rot = -35.7878
+
+[node name="R-Foot" parent="goalKeeper/Goleiro/Hip/R-Thigh/R-Leg"]
+
+transform/pos = Vector2( -2.6911, 92.4625 )
+transform/rot = 2.77306
+transform/scale = Vector2( 1.17016, 0.965956 )
 
 [node name="Animação-Goleiro" parent="goalKeeper/Goleiro"]
 
