@@ -2,16 +2,17 @@
 
 ## Atributos:
 
-  + **Autores e colaboradores:** Roberto Parente, Marcos Gubitoso, "TomGubi" ???, Josi Perez
+  + **Autores e colaboradores:** Josi Perez (até 2017-02), Roberto Parente(até 2017-05), "TomGubi" (até 2017-05), Marco Gubitoso (até 2017-05)
   + **Mantenedor atual:** ???
-  + **Supervisão:** ???
+  + **Supervisão:** Marco Gubitoso
   + **Usuários alvo:** ???
-  + **Criação:** ???
-  + **Situação:** ???
+  + **Criação:** Marco Gubitoso (2017-01) 
+  + **Situação:** inativo ???
 
 ## Descrição e objetivos:**
-  A re-implementation of the "Goalkeeper Game" learning test
-  in the Godot platform.
+
+  Uma re-implementação do teste de aprendizado "Jogo do Goleiro"
+  na plataforma Godot (em substiuição a Unity).
   
-  ??? More details needed ???
+  ??? Expandir ???
   
