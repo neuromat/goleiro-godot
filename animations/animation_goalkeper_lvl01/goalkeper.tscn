@@ -10,7 +10,7 @@
 [ext_resource path="res://animations/animation_goalkeper_lvl01/perna_6_2.png" type="Texture" id=8]
 [ext_resource path="res://animations/animation_goalkeper_lvl01/perna6.png" type="Texture" id=9]
 [ext_resource path="res://animations/animation_goalkeper_lvl01/corpo_5.png" type="Texture" id=10]
-[ext_resource path="res://animations/animation_goalkeper_lvl01/Torso+Cabeça.png" type="Texture" id=11]
+[ext_resource path="res://animations/animation_goalkeper_lvl01/Torso_and_Head.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 

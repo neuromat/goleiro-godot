@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/GUI/choose_game/game_list.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Viga-Regular.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://images/Interface/button.png" type="Texture" id=4]
-[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/KOMIKAX_neutra2.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 

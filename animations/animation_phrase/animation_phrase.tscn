@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://fonts/KOMIKAX_ - neutra2.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/KOMIKAX_neutra2.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://animations/animation_phrase/animation_phrase.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
